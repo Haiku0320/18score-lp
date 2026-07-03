@@ -1,0 +1,232 @@
+/* 18 Score — minimal support/legal site
+   Shared stylesheet. Kept intentionally small: this site exists to satisfy
+   Apple Developer / App Store review requirements (working company site,
+   support contact, privacy policy, terms of use), not for marketing. */
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5a5a5a;
+  --accent: #0a7d3c;
+  --border: #e3e3e0;
+  --bg: #fbfbf9;
+  --card: #ffffff;
+  --max-width: 720px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.site-header .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.brand small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.top-nav a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-left: 1.1rem;
+}
+
+.top-nav a:first-child {
+  margin-left: 0;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin-top: 2.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3rem;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin-bottom: 1.8rem;
+}
+
+.updated {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.card-links {
+  list-style: none;
+  padding: 0;
+  margin: 1.6rem 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.card-links a {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.card-links a:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.card-links span {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.mail-cta {
+  display: inline-block;
+  margin: 1rem 0 0.5rem;
+  padding: 0.75rem 1.3rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.mail-cta:hover {
+  text-decoration: none;
+  opacity: 0.92;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  width: 30%;
+}
+
+ul.plain,
+ol.plain {
+  padding-left: 1.3rem;
+}
+
+ul.plain li,
+ol.plain li {
+  margin: 0.3rem 0;
+}
+
+.faq dt {
+  font-weight: 600;
+  margin-top: 1.1rem;
+}
+
+.faq dd {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.note {
+  background: #f4f4ef;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 1.2rem 0;
+}
+
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+footer.site-footer .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.6rem 1.5rem 2.4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+footer.site-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2.2rem;
+  font-size: 0.9rem;
+}
