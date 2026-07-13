@@ -1,67 +1,206 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>18 Score｜マイティベル合同会社</title>
-<meta name="description" content="マイティベル合同会社が提供するiPhone向けゴルフスコア記録アプリ「18 Score」の公式情報サイト。サポート、プライバシーポリシー、利用規約をご案内します。">
-<link rel="stylesheet" href="./assets/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edeeec">
+  <title>18 Score｜ラウンドの一打を、次の上達へ</title>
+  <meta name="description" content="18 Scoreは、iPhoneとApple Watchでショットを記録し、クラブ別の飛距離やミスの傾向を振り返るゴルフ記録アプリです。">
+  <link rel="icon" href="../design/app_icon_ios_1024.png">
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
-<body>
-<header class="site-header">
-  <div class="inner">
-    <div class="brand">18 Score<small>マイティベル合同会社</small></div>
-    <nav class="top-nav">
-      <a href="./support/">サポート</a>
-      <a href="./privacy/">プライバシー</a>
-      <a href="./terms/">利用規約</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <h1>スマホひとつで、ゴルフのスコアを記録し、振り返る。</h1>
-  <p class="lede">
-    マイティベル合同会社（mightybell LLC）は、iPhone向けゴルフスコア記録アプリ「18 Score」を開発・提供しています。
-    ラウンド・スコア・クラブ・ショットの記録はお使いの端末内に保存され、シンプルに振り返ることができます。
-  </p>
-
-  <ul class="card-links">
-    <li>
-      <a href="./support/">18 Score サポート
-        <span>お問い合わせ・よくある質問</span>
+<body class="landing-page">
+  <header class="site-header landing-header">
+    <div class="inner wide">
+      <a class="brand-logo" href="./" aria-label="18 Score トップ">
+        <img src="../design/logo_18score.png" alt="18 Score">
       </a>
-    </li>
-    <li>
-      <a href="./privacy/">プライバシーポリシー
-        <span>情報の取り扱いについて</span>
-      </a>
-    </li>
-    <li>
-      <a href="./terms/">利用規約
-        <span>本アプリのご利用条件</span>
-      </a>
-    </li>
-    <li>
-      <a href="./licenses/">オープンソースライセンス
-        <span>本アプリが利用するソフトウェアの表示</span>
-      </a>
-    </li>
-  </ul>
+      <nav class="top-nav" aria-label="メインメニュー">
+        <a href="#record">ラウンド記録</a>
+        <a href="#analysis">振り返り</a>
+        <a href="#watch">Apple Watch</a>
+        <a href="#premium">料金</a>
+      </nav>
+      <!-- App Storeの商品URLが発行されたら、このspanを同URLへのa要素へ変更する。 -->
+      <span class="header-store-badge" role="img" aria-label="App Storeからダウンロード">
+        <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
+      </span>
+    </div>
+  </header>
 
-  <h2>運営会社</h2>
-  <table>
-    <tr><th>会社名</th><td>マイティベル合同会社（英語表記: mightybell LLC）</td></tr>
-    <tr><th>提供アプリ</th><td>18 Score（iPhone / Apple Watch対応）</td></tr>
-    <tr><th>お問い合わせ</th><td><a href="mailto:support@18score.app">support@18score.app</a></td></tr>
-  </table>
-</main>
+  <main class="landing-main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">RECORD. REVIEW. IMPROVE.</p>
+        <h1 id="hero-title">ラウンドの一打を、<br>次の上達へ。</h1>
+        <span class="gold-rule" aria-hidden="true"></span>
+        <p class="hero-lede">
+          iPhoneとApple Watchで、打ったクラブやショット結果をその場で記録。
+          ラウンド後は、クラブ別の飛距離・ミスの傾向・ショット履歴まで振り返れます。
+        </p>
+        <div class="store-area">
+          <!-- App Storeの商品URLが発行されたら、このspanを同URLへのa要素へ変更する。 -->
+          <span class="app-store-badge" role="img" aria-label="App Storeからダウンロード">
+            <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
+          </span>
+        </div>
+        <ul class="hero-points">
+          <li>ショット・パットをすばやく記録</li>
+          <li>GPSで飛距離とショット位置を保存</li>
+          <li>クラブ別の傾向をラウンド後に分析</li>
+        </ul>
+      </div>
 
-<footer class="site-footer">
-  <div class="inner">
-    Copyright &copy; 2026 mightybell LLC. All rights reserved.<br>
-    <a href="./privacy/">プライバシーポリシー</a> ・ <a href="./terms/">利用規約</a> ・ <a href="./licenses/">ライセンス</a>
-  </div>
-</footer>
+      <div class="device-stage" aria-label="18 ScoreのiPhone・Apple Watch画面">
+        <div class="device-glow"></div>
+        <div class="iphone-hardware hero-iphone">
+          <span class="iphone-side iphone-side-left" aria-hidden="true"></span>
+          <span class="iphone-side iphone-side-right" aria-hidden="true"></span>
+          <span class="dynamic-island" aria-hidden="true"></span>
+          <div class="iphone-screen">
+            <img src="./assets/round-input.png" alt="18 Scoreのラウンド入力画面。クラブ、パット、OBなどを記録できます。">
+          </div>
+        </div>
+        <div class="watch-hardware hero-watch" aria-label="Apple Watchの実際のラウンド入力画面">
+          <span class="watch-strap top" aria-hidden="true"></span>
+          <span class="watch-strap bottom" aria-hidden="true"></span>
+          <span class="watch-crown" aria-hidden="true"></span>
+          <span class="watch-button" aria-hidden="true"></span>
+          <div class="watch-screen-frame">
+            <img src="./assets/watch-round.png" alt="Apple Watchでホール、スコア、パット、ペナルティ、Parを確認する画面">
+          </div>
+        </div>
+        <div class="screen-caption"><b>ラウンド中は、迷わず入力。</b><span>大きなボタンで1打ずつ記録</span></div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="18 Scoreの主な特徴">
+      <div><strong>1打ずつ</strong><span>クラブと結果を記録</span></div>
+      <div><strong>iPhone + Watch</strong><span>ラウンド中の入力を連携</span></div>
+      <div><strong>月額 ¥300</strong><span>記録は無料、分析はPremium</span></div>
+    </section>
+
+    <section id="record" class="product-section section" aria-labelledby="record-title">
+      <div class="product-copy">
+        <p class="step-label">01 · DURING THE ROUND</p>
+        <h2 id="record-title">打ったクラブをタップ。<br>記録はそれだけ。</h2>
+        <p>スコアだけでなく、使用クラブ、パット、OB、ペナルティ、バンカー、ティーショット方向まで記録できます。ショット位置と飛距離はGPSで保存され、あとから1打ずつ確認できます。</p>
+        <ul class="check-list">
+          <li>クラブ別／シンプル、2つの記録スタイル</li>
+          <li>途中でアプリを閉じてもラウンドを再開</li>
+          <li>誤入力は「ひとつ戻す」で取り消し</li>
+        </ul>
+      </div>
+      <div class="feature-visual input-visual">
+        <div class="shot-card"><span>SHOT 1</span><strong>Dr</strong><em>238 yd</em></div>
+        <div class="shot-card second"><span>SHOT 2</span><strong>7i</strong><em>151 yd</em></div>
+        <div class="target-ring"><i></i></div>
+        <p>打順・クラブ・位置・距離を<br>ショット履歴に残す</p>
+      </div>
+    </section>
+
+    <section id="watch" class="watch-band" aria-labelledby="watch-title">
+      <div class="watch-showcase" aria-hidden="true">
+        <div class="watch-hardware showcase-watch">
+          <span class="watch-strap top" aria-hidden="true"></span>
+          <span class="watch-strap bottom" aria-hidden="true"></span>
+          <span class="watch-crown" aria-hidden="true"></span>
+          <span class="watch-button" aria-hidden="true"></span>
+          <div class="watch-screen-frame">
+            <img src="./assets/watch-round.png" alt="Apple Watch版18 Scoreのラウンド入力画面">
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="step-label light">02 · APPLE WATCH</p>
+        <h2 id="watch-title">iPhoneを出さずに、<br>手元でショットを記録。</h2>
+        <p>iPhoneで始めたラウンドをApple Watchへ連携。クラブ、パット、OBなどを手首から入力し、記録はiPhone側のラウンドへ反映されます。</p>
+        <ul class="watch-benefits">
+          <li><b>クラブ入力</b><span>打ったクラブをその場で選択</span></li>
+          <li><b>GPS記録</b><span>タップした場所からショット位置を保存</span></li>
+          <li><b>ホール移動</b><span>左右スワイプで前後ホールへ</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="analysis" class="product-section section analysis-section" aria-labelledby="analysis-title">
+      <div class="analysis-phone">
+        <div class="iphone-hardware analysis-iphone">
+          <span class="iphone-side iphone-side-left" aria-hidden="true"></span>
+          <span class="iphone-side iphone-side-right" aria-hidden="true"></span>
+          <span class="dynamic-island" aria-hidden="true"></span>
+          <div class="iphone-screen">
+            <img src="./assets/club-analysis.png" alt="ドライバーのクラブ別飛距離分析画面。飛距離の推移やばらつきを確認できます。">
+          </div>
+        </div>
+      </div>
+      <div class="product-copy">
+        <p class="step-label">03 · AFTER THE ROUND</p>
+        <h2 id="analysis-title">ドライバーのばらつきが、<br>次の練習テーマに変わる。</h2>
+        <p>平均飛距離を眺めるだけでなく、飛ばなかった一打や左右のブレまでショット単位で確認。感覚だけの反省を、次のラウンドで試せる改善点に変えます。</p>
+        <ul class="analysis-benefits">
+          <li><b>ミスの傾向が見える</b><span>クラブごとの飛距離とばらつきを整理</span></li>
+          <li><b>原因の一打まで戻れる</b><span>ラウンド別・ショット別の履歴を確認</span></li>
+          <li><b>次に試すことが決まる</b><span>振り返りを練習ポイントへつなげる</span></li>
+        </ul>
+        <p class="premium-inline"><b>Premium</b> クラブ統計・ショット履歴・解析コメント・クラブ別分析</p>
+      </div>
+    </section>
+
+    <section id="premium" class="section pricing" aria-labelledby="pricing-title">
+      <div class="section-heading centered">
+        <p class="eyebrow">SIMPLE PRICING</p>
+        <h2 id="pricing-title">記録は無料。分析は月額300円。</h2>
+        <p>ラウンド記録と基本集計は無料のまま。もっと深く振り返りたいときだけPremiumへ。</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan free-plan">
+          <p class="plan-name">FREE</p>
+          <h3>ラウンドを記録する</h3>
+          <p class="plan-price"><strong>¥0</strong></p>
+          <ul><li>ラウンド・ショット記録</li><li>スコアカード</li><li>基本集計</li><li>Apple Watch連携</li></ul>
+        </article>
+        <article class="plan premium-plan">
+          <p class="plan-name">PREMIUM</p>
+          <h3>記録から上達につなげる</h3>
+          <p class="trial">初回1ヶ月無料</p>
+          <p class="plan-price"><strong>¥300</strong><span>/ 月</span></p>
+          <ul><li>クラブ統計</li><li>クラブ別ショット履歴</li><li>解析コメント・練習ポイント</li><li>クラブ別分析</li></ul>
+          <p class="plan-note">無料期間終了後は月額300円。解約しない限り1ヶ月ごとに自動更新されます。購入・管理はApp Storeを通じて行います。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section" aria-labelledby="faq-title">
+      <div class="section-heading centered"><p class="eyebrow">FAQ</p><h2 id="faq-title">よくある質問</h2></div>
+      <div class="faq-list">
+        <details><summary>Apple Watchがなくても使えますか？</summary><p>はい。iPhoneだけでラウンドやショットを記録できます。</p></details>
+        <details><summary>Androidでも利用できますか？</summary><p>現在はiPhone向けアプリです。Android版・Webアプリには対応していません。</p></details>
+        <details><summary>Premiumはいつでも解約できますか？</summary><p>はい。App Storeのアカウント設定からいつでも管理・解約できます。次回更新日の24時間前までに解約すると、次回以降は更新されません。</p></details>
+      </div>
+    </section>
+
+    <section class="closing-cta" aria-labelledby="closing-title">
+      <p>一打ずつ残す。次のラウンドで確かめる。</p>
+      <h2 id="closing-title">あなたのゴルフを、記録から変えよう。</h2>
+      <span class="app-store-badge closing-store-badge" role="img" aria-label="App Storeからダウンロード">
+        <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
+      </span>
+    </section>
+  </main>
+
+  <footer class="site-footer landing-footer">
+    <div class="inner wide footer-grid">
+      <div>
+        <a class="brand-logo footer-logo" href="./"><img src="../design/logo_18score.png" alt="18 Score"></a>
+        <p>ラウンドの一打を、次の上達へ。</p>
+      </div>
+      <nav aria-label="サポート・法務">
+        <a href="./support/">サポート</a><a href="./privacy/">プライバシーポリシー</a><a href="./terms/">利用規約</a><a href="./commerce/">特定商取引法に基づく表記</a><a href="./licenses/">ライセンス</a>
+      </nav>
+    </div>
+    <div class="apple-credit">Apple、Appleのロゴ、Apple Watch、App StoreおよびiPhoneは、米国およびその他の国で登録されたApple Inc.の商標です。</div>
+    <div class="copyright">Copyright &copy; 2026 mightybell LLC. All rights reserved.</div>
+  </footer>
 </body>
 </html>
