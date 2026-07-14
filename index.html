@@ -1,206 +1,596 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#edeeec">
-  <title>18 Score｜ラウンドの一打を、次の上達へ</title>
-  <meta name="description" content="18 Scoreは、iPhoneとApple Watchでショットを記録し、クラブ別の飛距離やミスの傾向を振り返るゴルフ記録アプリです。">
-  <link rel="icon" href="../design/app_icon_ios_1024.png">
-  <link rel="stylesheet" href="./assets/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#164534">
+<title>18 Score｜毎ラウンド、次に直す1点がわかる。</title>
+<meta name="description" content="ゴルフスコア管理アプリ「18 Score」。各ショットをタップするだけで自動記録、GPSでショット位置と飛距離を可視化。スコアもショットもまとめて分析し、次のラウンドに活きる改善提案を届けます。">
+<meta property="og:title" content="18 Score｜毎ラウンド、次に直す1点がわかる。">
+<meta property="og:description" content="記録はかんたん。分析はまかせて。タップするだけのショット記録と、次につながるAIラウンド分析。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../design/app_icon_ios_1024.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#164534; --green-deep:#0d4a2a; --gold:#c9a24a; --btn:#2f6a4b;
+  --ink:#242422; --muted:#71716a; --bg:#f4f3ee; --line:#e7e5dd; --check:#5a9e4b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{background:#e6e4db;font-family:-apple-system,BlinkMacSystemFont,'SF Pro JP','SF Pro Text','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+a{color:var(--btn);text-decoration:none}
+a:hover{color:var(--green)}
+img{display:block;max-width:100%}
+.page{max-width:100%;margin:0 auto;background:#fff;overflow:hidden}
+.inner{max-width:1120px;margin-left:auto;margin-right:auto}
+
+/* ---------- top nav ---------- */
+.topnav{padding:14px 30px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.topnav .inner{display:flex;align-items:center;justify-content:space-between}
+.topnav img{height:28px;width:auto}
+.btn-cta{background:var(--btn);color:#fff;font-weight:700;font-size:13px;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(47,107,75,.28)}
+a.btn-cta:hover{color:#fff;background:var(--green)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:#fff}
+.hero-bg{position:absolute;inset:0;background-image:url(assets/lp/hero-bg.jpg);background-size:cover;background-position:right center}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(95deg,#fff 26%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.12) 100%)}
+.hero .inner{position:relative;padding:34px 30px 26px}
+.hero-grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:8px;align-items:center}
+.hero-badge{display:inline-block;border:1px solid var(--green);color:var(--green);font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 11px;border-radius:20px;margin-bottom:14px}
+.hero h1{margin:0 0 16px;font-size:30px;line-height:1.4;font-weight:900;color:var(--green);letter-spacing:.01em}
+.hl{position:relative;display:inline-block;color:var(--green);white-space:nowrap}
+.hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:2px;height:8px;background:var(--gold);opacity:.5;z-index:-1;border-radius:1px}
+.hero-sub{margin:0 0 20px;font-size:19px;font-weight:700;color:var(--ink)}
+.hero-checks{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:11px}
+.hero-checks li{display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500}
+.hero-checks img{width:20px;height:20px}
+.btn-hero{background:var(--btn);color:#fff;font-weight:700;font-size:14.5px;padding:14px 26px;border-radius:8px;box-shadow:0 6px 16px rgba(47,107,75,.32);display:inline-block}
+a.btn-hero:hover{color:#fff;background:var(--green)}
+.hero-visual{display:flex;justify-content:center;align-items:center;margin-left:-16%;overflow:visible;position:relative;z-index:0}
+.hero-visual img{width:142%;max-width:none;filter:drop-shadow(0 18px 30px rgba(0,0,0,.28))}
+
+/* ---------- before / after ---------- */
+.ba{position:relative;padding:34px 30px 40px;background:#fff}
+.ba h2{margin:0 0 24px;text-align:center;font-size:22px;font-weight:900;color:var(--green);line-height:1.5}
+.ba h2 .gold{color:var(--gold)}
+.ba-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+.ba-card{position:relative;border-radius:16px;overflow:hidden;min-height:250px}
+.ba-card.before{background:#e9e8e3;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.ba-card.after{background:#e7efe9;box-shadow:0 6px 18px rgba(22,69,52,.1)}
+.ba-photo{position:absolute;inset:0;background-size:auto 150%;background-repeat:no-repeat;background-position:left 30% center}
+.ba-card.before .ba-photo{background-image:url(assets/lp/before-card.jpg);filter:grayscale(1) brightness(1.08)}
+.ba-card.after .ba-photo{background-image:url(assets/lp/after-card.jpg);filter:brightness(1.08)}
+.ba-card.before .ba-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(240,239,235,.35) 0%,rgba(240,239,235,.78) 30%,rgba(240,239,235,.96) 50%,rgba(240,239,235,1) 100%)}
+.ba-card.after .ba-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(236,243,238,.35) 0%,rgba(236,243,238,.78) 28%,rgba(236,243,238,.96) 48%,rgba(236,243,238,1) 100%)}
+.ba-body{position:relative;padding:20px 22px;height:100%}
+.ba-title{font-size:25px;font-weight:900;line-height:1.2}
+.ba-card.before .ba-title{color:#6b6b64}
+.ba-card.after .ba-title{color:var(--green)}
+.ba-caption{font-size:18px;margin-top:2px}
+.ba-card.before .ba-caption{color:#8a8a80}
+.ba-card.after .ba-caption{color:var(--btn)}
+.ba-head{margin-bottom:18px}
+.ba-list{list-style:none;margin:0 0 0 auto;padding:0;width:60%;display:flex;flex-direction:column;gap:14px}
+.ba-card.after .ba-list{width:62%}
+.ba-list li{display:flex;align-items:flex-start;gap:8px;font-size:17px;line-height:1.6}
+.ba-card.before .ba-list li{color:#57574f}
+.ba-card.after .ba-list li{color:var(--green);font-weight:600}
+.ba-list img{width:21px;height:21px;flex:none;margin-top:2px}
+.ba-card.before .ba-list img{filter:grayscale(1) opacity(.6)}
+.ba-arrow{align-self:center}
+.ba-arrow img{width:28px;height:28px}
+
+/* ---------- auto record ---------- */
+.record{padding:44px 30px 40px;background:#fff}
+.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.record-copy{margin-top:96px}
+.record h2{margin:0 0 20px;font-size:26px;font-weight:900;color:var(--green);line-height:1.4}
+.record p{margin:0 0 22px;font-size:14px;color:var(--ink);line-height:1.9}
+.record-points{display:flex;gap:12px}
+.record-point{flex:1;text-align:center}
+.record-point .tile{width:62px;height:62px;margin:0 auto 10px;border-radius:14px;background:var(--bg);display:grid;place-items:center}
+.record-point .tile img{width:34px;height:34px}
+.record-point .label{font-size:11px;font-weight:500;color:var(--muted);line-height:1.5}
+.record-visual{display:flex;justify-content:center;align-items:flex-start;position:relative;z-index:2;overflow:visible;margin-top:-20px}
+.record-visual img{width:min(598px,100%);filter:drop-shadow(0 14px 26px rgba(0,0,0,.22))}
+
+/* ---------- analyze dashboard ---------- */
+.analyze{padding:40px 30px;background:var(--bg)}
+.analyze h2{margin:0 0 24px;text-align:center;font-size:23px;font-weight:900;color:var(--green)}
+.dash-row1{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.dash-row2{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}
+.card-label{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px}
+.card-center{text-align:center;display:flex;flex-direction:column;justify-content:center}
+.chart-img{width:100%;height:68px;object-fit:cover;object-position:center}
+.chart-axis{display:flex;justify-content:space-between;font-size:9px;color:#a8a89f;margin-top:5px}
+.big-num{font-size:30px;font-weight:900;color:var(--green);line-height:1.1}
+.big-num small{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
+.donut{width:78px;height:78px;margin:0 auto;border-radius:50%;display:grid;place-items:center}
+.donut>div{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;font-weight:900;color:var(--green)}
+.stat-list{display:flex;flex-direction:column;gap:8px;font-size:11px}
+.stat-list>div{display:flex;justify-content:space-between}
+.stat-list span{color:var(--muted);font-weight:700}
+.stat-list b{color:var(--ink)}
+.bar-list{display:flex;flex-direction:column;gap:9px;font-size:11px}
+.bar-list .bar-head{display:flex;justify-content:space-between;margin-bottom:3px}
+.bar-list .bar-head span{color:var(--ink);font-weight:700}
+.bar-track{height:6px;background:#e8eae4;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;background:var(--green-deep)}
+.hole-list{display:flex;flex-direction:column;gap:9px;font-size:11px}
+.hole-list>div{display:flex;justify-content:space-between}
+.hole-list span{color:var(--muted);font-weight:700}
+.plus{color:#c0642e}
+.minus{color:var(--check)}
+.advice{display:flex;flex-direction:column}
+.advice p{margin:0 0 10px;font-size:12px;line-height:1.75;color:var(--ink)}
+
+/* ---------- course insight (dark) ---------- */
+.insight{position:relative;background:#0a130c;overflow:hidden}
+.insight-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.96;transform:scale(1.18)}
+.insight .inner{position:relative;padding:52px 30px 54px}
+.insight-copy{max-width:340px}
+.insight h2{margin:0 0 6px;font-size:22px;font-weight:900;color:#fff;line-height:1.4}
+.insight-lead{margin:0 0 18px;font-size:12px;color:rgba(255,255,255,.72);line-height:1.8}
+.insight-card{background:rgba(10,30,18,.66);border:1px solid rgba(201,162,74,.45);border-radius:12px;padding:16px 18px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.insight-card .k{font-size:11.5px;font-weight:700;color:var(--gold);margin-bottom:3px}
+.insight-card .v{font-size:13px;color:#fff;margin-bottom:11px;font-weight:500}
+.insight-card .hint{font-size:12.5px;color:rgba(255,255,255,.9);line-height:1.6}
+
+/* ---------- 4 steps ---------- */
+.steps{padding:34px 30px;background:var(--bg)}
+.steps h2{margin:0 0 26px;text-align:center;font-size:19px;font-weight:900;color:var(--green)}
+.steps-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:6px;align-items:start}
+.step{text-align:center}
+.step .tile{width:70px;height:70px;margin:0 auto 12px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
+.step .tile img{width:36px;height:36px}
+.step .name{font-size:13px;font-weight:900;color:var(--green);margin-bottom:5px}
+.step .desc{font-size:11px;color:var(--muted);line-height:1.6}
+.step-arrow{align-self:center;padding-top:10px}
+.step-arrow img{width:16px;height:16px;opacity:.85}
+
+/* ---------- reasons ---------- */
+.reasons{padding:38px 30px;background:#fff}
+.reasons h2{margin:0 0 24px;text-align:center;font-size:21px;font-weight:900;color:var(--green)}
+.reasons-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.reason-photo{border-radius:12px;overflow:hidden;height:150px;margin-bottom:10px;background:#eee}
+.reason-photo.dark{background:#0a130c}
+.reason-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.reason-photo img.pos-58{object-position:center 58%}
+.reason-photo img.pos-38{object-position:center 38%}
+.reason-name{font-size:12.5px;font-weight:900;color:var(--ink);margin-bottom:4px}
+.reason-desc{font-size:11px;color:var(--muted);line-height:1.6}
+
+/* ---------- features ---------- */
+.features{padding:34px 30px;background:var(--bg)}
+.features h2{margin:0 0 24px;text-align:center;font-size:21px;font-weight:900;color:var(--green)}
+.features-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center}
+.feature .tile{width:60px;height:60px;margin:0 auto 11px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
+.feature .tile img{width:32px;height:32px}
+.feature .name{font-size:11px;font-weight:900;color:var(--ink);margin-bottom:3px}
+.feature .desc{font-size:9.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- pricing ---------- */
+.pricing{padding:36px 30px 40px;background:#fff}
+.pricing h2{margin:0 0 6px;text-align:center;font-size:21px;font-weight:900;color:var(--green)}
+.pricing .lead{margin:0 0 22px;text-align:center;font-size:12px;color:var(--muted)}
+.price-table{width:100%;max-width:760px;margin-left:auto;margin-right:auto;border-collapse:collapse;font-size:12px;table-layout:fixed}
+.price-table th{border:0;vertical-align:bottom;padding:0 6px 12px;text-align:center}
+.price-table th:first-child{width:44%}
+.plan-name{font-size:12px;font-weight:900;color:var(--ink);letter-spacing:.06em}
+.plan-name.premium{color:var(--green)}
+.plan-sub{font-size:10px;font-weight:500;color:var(--muted);margin-top:2px}
+.plan-badge{display:inline-block;background:var(--gold);color:#fff;font-size:9px;font-weight:900;letter-spacing:.08em;padding:2px 8px;margin-bottom:5px}
+.tr-group td{padding:9px 8px;font-weight:900;font-size:11px;white-space:nowrap}
+.tr-group.free-group{background:#f1f5f2}
+.tr-group.free-group td{color:var(--green);border-top:2px solid var(--green)}
+.tr-group.premium-group{background:#faf5ea}
+.tr-group.premium-group td{color:var(--gold);border-top:1px solid var(--line)}
+.price-table tbody td{border-top:1px solid var(--line)}
+.price-table td.feat{padding:11px 2px}
+.price-table td.mark{text-align:center}
+.price-table td.premium-col{background:#eef5f0;border-top:1px solid #d9e8df}
+.check-free{width:13px;height:13px;margin:0 auto;opacity:.55}
+.check-badge{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--green);align-items:center;justify-content:center;vertical-align:middle}
+.check-badge img{width:11px;height:11px;filter:brightness(0) invert(1)}
+.dash{color:#c5c5bd}
+.tr-price td{border-top:2px solid var(--green)!important}
+.tr-price .feat{padding:14px 2px;font-weight:900;color:var(--ink)}
+.tr-price .free-price{text-align:center;font-weight:900;font-size:16px;color:var(--ink)}
+.tr-price .premium-price{text-align:center}
+.tr-price .premium-price .trial{font-size:9px;font-weight:700;color:var(--muted)}
+.tr-price .premium-price .amount{font-size:16px;font-weight:900;color:var(--green);line-height:1.2}
+.tr-price .premium-price .amount .gold{color:var(--gold)}
+.tr-price .premium-price .amount small{font-size:10px;color:var(--muted);font-weight:700}
+
+/* ---------- final CTA ---------- */
+.cta{background:var(--green);padding:0;overflow:hidden}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0}
+.cta-visual{display:flex;justify-content:center;align-items:flex-end;padding:22px 0 0;overflow:hidden}
+.cta-visual img{width:118%;max-width:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.4))}
+.cta-copy{padding:34px 34px 34px 20px}
+.cta-copy .msg{font-size:20px;font-weight:900;color:#fff;line-height:1.55;margin-bottom:20px}
+.btn-gold{display:block;background:var(--gold);color:#fff;font-weight:900;font-size:16px;padding:16px;border-radius:9px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+a.btn-gold:hover{color:#fff;background:#b8873a}
+.cta-note{font-size:10.5px;color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--bg);border-top:1px solid var(--line);padding:26px 30px 30px}
+.site-footer .inner{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.site-footer img{height:22px;width:auto}
+.footer-nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11.5px}
+.footer-copy{width:100%;font-size:10.5px;color:var(--muted);margin-top:4px}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .topnav{padding:12px 18px}
+  .hero .inner{padding:28px 18px 0}
+  .hero-grid{grid-template-columns:1fr;gap:0}
+  .hero-veil{background:linear-gradient(180deg,#fff 42%,rgba(255,255,255,.82) 68%,rgba(255,255,255,.3) 100%)}
+  .hero h1{font-size:26px}
+  .hero-visual{margin-left:0;margin-top:6px}
+  .hero-visual img{width:100%;max-width:520px}
+  .ba,.record,.analyze,.steps,.reasons,.features,.pricing{padding-left:18px;padding-right:18px}
+  .ba-grid{grid-template-columns:1fr}
+  .ba-arrow{justify-self:center;transform:rotate(90deg)}
+  .record-grid{grid-template-columns:1fr}
+  .record-copy{margin-top:0}
+  .record-visual{margin-top:0}
+  .dash-row1,.dash-row2{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr 1fr;gap:18px 10px}
+  .step-arrow{display:none}
+  .reasons-grid{grid-template-columns:1fr 1fr}
+  .features-grid{grid-template-columns:repeat(3,1fr);gap:14px 10px}
+  .insight .inner{padding:36px 18px}
+  .insight-bg{transform:scale(1)}
+  .cta-grid{grid-template-columns:1fr}
+  .cta-copy{padding:28px 22px 32px}
+  .cta-visual{order:2;padding:8px 0 0}
+  .cta-visual img{width:100%;max-width:520px}
+  .price-table th:first-child{width:38%}
+}
+@media (max-width:480px){
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:23px}
+  .hero-sub{font-size:16px}
+  .ba-list{width:72%}
+  .ba-card.after .ba-list{width:72%}
+}
+</style>
 </head>
-<body class="landing-page">
-  <header class="site-header landing-header">
-    <div class="inner wide">
-      <a class="brand-logo" href="./" aria-label="18 Score トップ">
-        <img src="../design/logo_18score.png" alt="18 Score">
-      </a>
-      <nav class="top-nav" aria-label="メインメニュー">
-        <a href="#record">ラウンド記録</a>
-        <a href="#analysis">振り返り</a>
-        <a href="#watch">Apple Watch</a>
-        <a href="#premium">料金</a>
-      </nav>
-      <!-- App Storeの商品URLが発行されたら、このspanを同URLへのa要素へ変更する。 -->
-      <span class="header-store-badge" role="img" aria-label="App Storeからダウンロード">
-        <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
-      </span>
+<body>
+<div class="page">
+
+<!-- ============ TOP NAV ============ -->
+<header class="topnav">
+  <div class="inner">
+    <img src="assets/lp/logo.png" alt="18 Score">
+    <a class="btn-cta" href="#signup">事前登録する（無料）</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">AIラウンド分析</div>
+        <h1>毎ラウンド、<br>次に直す <span class="hl">1点</span> がわかる。</h1>
+        <p class="hero-sub">記録はかんたん。分析はまかせて。</p>
+        <ul class="hero-checks">
+          <li><img src="assets/lp/icon-check-circle.png" alt="">各ショットをタップするだけで自動記録</li>
+          <li><img src="assets/lp/icon-check-circle.png" alt="">GPSでショット位置と飛距離を可視化</li>
+          <li><img src="assets/lp/icon-check-circle.png" alt="">スコアもショットもまとめて分析</li>
+          <li><img src="assets/lp/icon-check-circle.png" alt="">次のラウンドに活きる改善提案</li>
+        </ul>
+        <div><a class="btn-hero" href="#signup">事前登録する（無料）</a></div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/lp/hero-devices.png" alt="18 Score アプリ（iPhoneとApple Watch）">
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main class="landing-main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">RECORD. REVIEW. IMPROVE.</p>
-        <h1 id="hero-title">ラウンドの一打を、<br>次の上達へ。</h1>
-        <span class="gold-rule" aria-hidden="true"></span>
-        <p class="hero-lede">
-          iPhoneとApple Watchで、打ったクラブやショット結果をその場で記録。
-          ラウンド後は、クラブ別の飛距離・ミスの傾向・ショット履歴まで振り返れます。
-        </p>
-        <div class="store-area">
-          <!-- App Storeの商品URLが発行されたら、このspanを同URLへのa要素へ変更する。 -->
-          <span class="app-store-badge" role="img" aria-label="App Storeからダウンロード">
-            <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
-          </span>
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="ba">
+  <div class="inner">
+    <h2>なんとなくの記録を、<span class="gold">次につながる改善</span>へ。</h2>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <div class="ba-photo"></div>
+        <div class="ba-veil"></div>
+        <div class="ba-body">
+          <div class="ba-head">
+            <div class="ba-title">Before</div>
+            <div class="ba-caption">なんとなく振り返って終わり</div>
+          </div>
+          <ul class="ba-list">
+            <li><img src="assets/lp/icon-check-circle.png" alt="">どこが良くて、悪かったか思い出せない</li>
+            <li><img src="assets/lp/icon-check-circle.png" alt="">課題はわかるけど、原因がわからない</li>
+            <li><img src="assets/lp/icon-check-circle.png" alt="">次に何をすればいいか決められない</li>
+          </ul>
         </div>
-        <ul class="hero-points">
-          <li>ショット・パットをすばやく記録</li>
-          <li>GPSで飛距離とショット位置を保存</li>
-          <li>クラブ別の傾向をラウンド後に分析</li>
-        </ul>
       </div>
+      <div class="ba-arrow"><img src="assets/lp/icon-play-1.png" alt="→"></div>
+      <div class="ba-card after">
+        <div class="ba-photo"></div>
+        <div class="ba-veil"></div>
+        <div class="ba-body">
+          <div class="ba-head">
+            <div class="ba-title">After</div>
+            <div class="ba-caption">次の一歩が明確になる</div>
+          </div>
+          <ul class="ba-list">
+            <li><img src="assets/lp/icon-check-circle.png" alt="">課題の原因をデータで特定</li>
+            <li><img src="assets/lp/icon-check-circle.png" alt="">具体的な改善ポイントがわかる</li>
+            <li><img src="assets/lp/icon-check-circle.png" alt="">練習メニューと次のラウンドで試すことが明確に</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="device-stage" aria-label="18 ScoreのiPhone・Apple Watch画面">
-        <div class="device-glow"></div>
-        <div class="iphone-hardware hero-iphone">
-          <span class="iphone-side iphone-side-left" aria-hidden="true"></span>
-          <span class="iphone-side iphone-side-right" aria-hidden="true"></span>
-          <span class="dynamic-island" aria-hidden="true"></span>
-          <div class="iphone-screen">
-            <img src="./assets/round-input.png" alt="18 Scoreのラウンド入力画面。クラブ、パット、OBなどを記録できます。">
+<!-- ============ AUTO-RECORD ============ -->
+<section id="features" class="record">
+  <div class="inner">
+    <div class="record-grid">
+      <div class="record-copy">
+        <h2>打ったあとは、<br>ショット地点を自動記録。</h2>
+        <p>各ショットの後にタップするだけ。<br>GPSが位置を記録し、あとから<br>ショットの軌跡と飛距離を<br>マップ上に可視化します。</p>
+        <div class="record-points">
+          <div class="record-point">
+            <div class="tile"><img src="assets/lp/icon-hand-tap.png" alt=""></div>
+            <div class="label">タップするだけ<br>で記録</div>
+          </div>
+          <div class="record-point">
+            <div class="tile"><img src="assets/lp/icon-map-pin.png" alt=""></div>
+            <div class="label">GPSで<br>正確に位置を記録</div>
+          </div>
+          <div class="record-point">
+            <div class="tile"><img src="assets/lp/icon-route-dotted.png" alt=""></div>
+            <div class="label">ショットの軌跡と<br>飛距離を可視化</div>
           </div>
         </div>
-        <div class="watch-hardware hero-watch" aria-label="Apple Watchの実際のラウンド入力画面">
-          <span class="watch-strap top" aria-hidden="true"></span>
-          <span class="watch-strap bottom" aria-hidden="true"></span>
-          <span class="watch-crown" aria-hidden="true"></span>
-          <span class="watch-button" aria-hidden="true"></span>
-          <div class="watch-screen-frame">
-            <img src="./assets/watch-round.png" alt="Apple Watchでホール、スコア、パット、ペナルティ、Parを確認する画面">
-          </div>
+      </div>
+      <div class="record-visual">
+        <img src="assets/lp/shot-map-phone.png" alt="ショット軌跡をマップ上に表示した18 Scoreの画面">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANALYZE DASHBOARD ============ -->
+<section class="analyze">
+  <div class="inner">
+    <h2>すべての記録を、わかりやすく分析。</h2>
+    <div class="dash-row1">
+      <div class="card">
+        <div class="card-label">スコア推移</div>
+        <img class="chart-img" src="assets/lp/chart-score-trend.png" alt="スコア推移グラフ">
+        <div class="chart-axis"><span>3/1</span><span>6/1</span><span>7/1</span><span>8/1</span><span>9/1</span></div>
+      </div>
+      <div class="card card-center">
+        <div class="card-label" style="margin-bottom:6px">平均パット数</div>
+        <div class="big-num">1.8<small>パット</small></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="card-label">フェアウェイキープ率</div>
+        <div class="donut" style="background:conic-gradient(var(--check) 0 28%,#e4e7e1 28% 100%)"><div>28%</div></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="card-label">パーオン率</div>
+        <div class="donut" style="background:conic-gradient(var(--check) 0 26%,#e4e7e1 26% 100%)"><div>26%</div></div>
+      </div>
+    </div>
+    <div class="dash-row2">
+      <div class="card">
+        <div class="card-label" style="margin-bottom:10px">ショット別の平均飛距離</div>
+        <div class="stat-list">
+          <div><span>1W</span><b>242y</b></div>
+          <div><span>5W</span><b>210y</b></div>
+          <div><span>5I</span><b>168y</b></div>
+          <div><span>PW</span><b>102y</b></div>
         </div>
-        <div class="screen-caption"><b>ラウンド中は、迷わず入力。</b><span>大きなボタンで1打ずつ記録</span></div>
       </div>
-    </section>
-
-    <section class="proof-strip" aria-label="18 Scoreの主な特徴">
-      <div><strong>1打ずつ</strong><span>クラブと結果を記録</span></div>
-      <div><strong>iPhone + Watch</strong><span>ラウンド中の入力を連携</span></div>
-      <div><strong>月額 ¥300</strong><span>記録は無料、分析はPremium</span></div>
-    </section>
-
-    <section id="record" class="product-section section" aria-labelledby="record-title">
-      <div class="product-copy">
-        <p class="step-label">01 · DURING THE ROUND</p>
-        <h2 id="record-title">打ったクラブをタップ。<br>記録はそれだけ。</h2>
-        <p>スコアだけでなく、使用クラブ、パット、OB、ペナルティ、バンカー、ティーショット方向まで記録できます。ショット位置と飛距離はGPSで保存され、あとから1打ずつ確認できます。</p>
-        <ul class="check-list">
-          <li>クラブ別／シンプル、2つの記録スタイル</li>
-          <li>途中でアプリを閉じてもラウンドを再開</li>
-          <li>誤入力は「ひとつ戻す」で取り消し</li>
-        </ul>
-      </div>
-      <div class="feature-visual input-visual">
-        <div class="shot-card"><span>SHOT 1</span><strong>Dr</strong><em>238 yd</em></div>
-        <div class="shot-card second"><span>SHOT 2</span><strong>7i</strong><em>151 yd</em></div>
-        <div class="target-ring"><i></i></div>
-        <p>打順・クラブ・位置・距離を<br>ショット履歴に残す</p>
-      </div>
-    </section>
-
-    <section id="watch" class="watch-band" aria-labelledby="watch-title">
-      <div class="watch-showcase" aria-hidden="true">
-        <div class="watch-hardware showcase-watch">
-          <span class="watch-strap top" aria-hidden="true"></span>
-          <span class="watch-strap bottom" aria-hidden="true"></span>
-          <span class="watch-crown" aria-hidden="true"></span>
-          <span class="watch-button" aria-hidden="true"></span>
-          <div class="watch-screen-frame">
-            <img src="./assets/watch-round.png" alt="Apple Watch版18 Scoreのラウンド入力画面">
-          </div>
+      <div class="card">
+        <div class="card-label" style="margin-bottom:10px">よく行くミスの傾向</div>
+        <div class="bar-list">
+          <div><div class="bar-head"><span>OB</span><b>16%</b></div><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div></div>
+          <div><div class="bar-head"><span>バンカー</span><b>12%</b></div><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div></div>
+          <div><div class="bar-head"><span>ペナ</span><b>8%</b></div><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div></div>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-label" style="margin-bottom:10px">ホール別スコア</div>
+        <div class="hole-list">
+          <div><span>Par5</span><b class="plus">+0.3</b></div>
+          <div><span>Par4</span><b class="plus">+0.2</b></div>
+          <div><span>Par3</span><b class="minus">-0.1</b></div>
+        </div>
+      </div>
+      <div class="card advice">
+        <div class="card-label">アドバイス</div>
+        <p>パーオン率が低めです。アイアンの精度向上がスコアアップの鍵です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COURSE INSIGHT (DARK) ============ -->
+<section class="insight">
+  <img class="insight-bg" src="assets/lp/course-map.jpg" alt="">
+  <div class="inner">
+    <div class="insight-copy">
+      <h2>データが示す「課題」で、<br>スコアを変える。</h2>
+      <p class="insight-lead">あなたのラウンドデータを分析し、<br>最も改善効果の高いポイントを提案します。</p>
+      <div class="insight-card">
+        <div class="k">あなたの課題</div>
+        <div class="v">ドライバーの右へのミスが多い</div>
+        <div class="k">影響</div>
+        <div class="v">1ラウンド平均 <b>1.8</b> 打のロス</div>
+        <div class="k">改善のヒント</div>
+        <div class="hint">右サイドのミスを減らし、<br>フェアウェイキープ率を向上させよう</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 STEPS ============ -->
+<section class="steps">
+  <div class="inner">
+    <h2>かんたん4ステップ。ラウンドがもっとシンプルに。</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="tile"><img src="assets/lp/icon-phone-tap.png" alt=""></div>
+        <div class="name">① 記録する</div>
+        <div class="desc">各ショットを<br>タップで記録</div>
+      </div>
+      <div class="step-arrow"><img src="assets/lp/icon-play-2.png" alt=""></div>
+      <div class="step">
+        <div class="tile"><img src="assets/lp/icon-growth-arrow.png" alt=""></div>
+        <div class="name">② 振り返る</div>
+        <div class="desc">ショットマップと統計で<br>内容を確認</div>
+      </div>
+      <div class="step-arrow"><img src="assets/lp/icon-play-2.png" alt=""></div>
+      <div class="step">
+        <div class="tile"><img src="assets/lp/icon-flag-pin.png" alt=""></div>
+        <div class="name">③ 分析する</div>
+        <div class="desc">得意・課題を把握し<br>改善点を見つける</div>
+      </div>
+      <div class="step-arrow"><img src="assets/lp/icon-play-2.png" alt=""></div>
+      <div class="step">
+        <div class="tile"><img src="assets/lp/icon-sync-arrows.png" alt=""></div>
+        <div class="name">④ つなげる</div>
+        <div class="desc">次のラウンドや練習で<br>改善を実践</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REASONS ============ -->
+<section class="reasons">
+  <div class="inner">
+    <h2>18 Scoreが選ばれる理由</h2>
+    <div class="reasons-grid">
+      <div>
+        <div class="reason-photo"><img src="assets/lp/reason-record.jpg" alt="手元で18 Scoreを操作している様子"></div>
+        <div class="reason-name">かんたん記録で続けやすい</div>
+        <div class="reason-desc">タップだけのシンプル操作で<br>誰でもすぐに使える</div>
       </div>
       <div>
-        <p class="step-label light">02 · APPLE WATCH</p>
-        <h2 id="watch-title">iPhoneを出さずに、<br>手元でショットを記録。</h2>
-        <p>iPhoneで始めたラウンドをApple Watchへ連携。クラブ、パット、OBなどを手首から入力し、記録はiPhone側のラウンドへ反映されます。</p>
-        <ul class="watch-benefits">
-          <li><b>クラブ入力</b><span>打ったクラブをその場で選択</span></li>
-          <li><b>GPS記録</b><span>タップした場所からショット位置を保存</span></li>
-          <li><b>ホール移動</b><span>左右スワイプで前後ホールへ</span></li>
-        </ul>
+        <div class="reason-photo dark"><img src="assets/lp/reason-analysis.jpg" alt="スコア推移のグラフ"></div>
+        <div class="reason-name">分析がわかりやすい</div>
+        <div class="reason-desc">スコアもショットも、<br>見やすいグラフで可視化</div>
       </div>
-    </section>
-
-    <section id="analysis" class="product-section section analysis-section" aria-labelledby="analysis-title">
-      <div class="analysis-phone">
-        <div class="iphone-hardware analysis-iphone">
-          <span class="iphone-side iphone-side-left" aria-hidden="true"></span>
-          <span class="iphone-side iphone-side-right" aria-hidden="true"></span>
-          <span class="dynamic-island" aria-hidden="true"></span>
-          <div class="iphone-screen">
-            <img src="./assets/club-analysis.png" alt="ドライバーのクラブ別飛距離分析画面。飛距離の推移やばらつきを確認できます。">
-          </div>
-        </div>
-      </div>
-      <div class="product-copy">
-        <p class="step-label">03 · AFTER THE ROUND</p>
-        <h2 id="analysis-title">ドライバーのばらつきが、<br>次の練習テーマに変わる。</h2>
-        <p>平均飛距離を眺めるだけでなく、飛ばなかった一打や左右のブレまでショット単位で確認。感覚だけの反省を、次のラウンドで試せる改善点に変えます。</p>
-        <ul class="analysis-benefits">
-          <li><b>ミスの傾向が見える</b><span>クラブごとの飛距離とばらつきを整理</span></li>
-          <li><b>原因の一打まで戻れる</b><span>ラウンド別・ショット別の履歴を確認</span></li>
-          <li><b>次に試すことが決まる</b><span>振り返りを練習ポイントへつなげる</span></li>
-        </ul>
-        <p class="premium-inline"><b>Premium</b> クラブ統計・ショット履歴・解析コメント・クラブ別分析</p>
-      </div>
-    </section>
-
-    <section id="premium" class="section pricing" aria-labelledby="pricing-title">
-      <div class="section-heading centered">
-        <p class="eyebrow">SIMPLE PRICING</p>
-        <h2 id="pricing-title">記録は無料。分析は月額300円。</h2>
-        <p>ラウンド記録と基本集計は無料のまま。もっと深く振り返りたいときだけPremiumへ。</p>
-      </div>
-      <div class="plan-grid">
-        <article class="plan free-plan">
-          <p class="plan-name">FREE</p>
-          <h3>ラウンドを記録する</h3>
-          <p class="plan-price"><strong>¥0</strong></p>
-          <ul><li>ラウンド・ショット記録</li><li>スコアカード</li><li>基本集計</li><li>Apple Watch連携</li></ul>
-        </article>
-        <article class="plan premium-plan">
-          <p class="plan-name">PREMIUM</p>
-          <h3>記録から上達につなげる</h3>
-          <p class="trial">初回1ヶ月無料</p>
-          <p class="plan-price"><strong>¥300</strong><span>/ 月</span></p>
-          <ul><li>クラブ統計</li><li>クラブ別ショット履歴</li><li>解析コメント・練習ポイント</li><li>クラブ別分析</li></ul>
-          <p class="plan-note">無料期間終了後は月額300円。解約しない限り1ヶ月ごとに自動更新されます。購入・管理はApp Storeを通じて行います。</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="faq" class="section faq-section" aria-labelledby="faq-title">
-      <div class="section-heading centered"><p class="eyebrow">FAQ</p><h2 id="faq-title">よくある質問</h2></div>
-      <div class="faq-list">
-        <details><summary>Apple Watchがなくても使えますか？</summary><p>はい。iPhoneだけでラウンドやショットを記録できます。</p></details>
-        <details><summary>Androidでも利用できますか？</summary><p>現在はiPhone向けアプリです。Android版・Webアプリには対応していません。</p></details>
-        <details><summary>Premiumはいつでも解約できますか？</summary><p>はい。App Storeのアカウント設定からいつでも管理・解約できます。次回更新日の24時間前までに解約すると、次回以降は更新されません。</p></details>
-      </div>
-    </section>
-
-    <section class="closing-cta" aria-labelledby="closing-title">
-      <p>一打ずつ残す。次のラウンドで確かめる。</p>
-      <h2 id="closing-title">あなたのゴルフを、記録から変えよう。</h2>
-      <span class="app-store-badge closing-store-badge" role="img" aria-label="App Storeからダウンロード">
-        <img src="./assets/app-store-badge-ja.png" alt="App Storeからダウンロード">
-      </span>
-    </section>
-  </main>
-
-  <footer class="site-footer landing-footer">
-    <div class="inner wide footer-grid">
       <div>
-        <a class="brand-logo footer-logo" href="./"><img src="../design/logo_18score.png" alt="18 Score"></a>
-        <p>ラウンドの一打を、次の上達へ。</p>
+        <div class="reason-photo"><img class="pos-58" src="assets/lp/reason-improve.jpg" alt="芝の上のゴルフボール"></div>
+        <div class="reason-name">改善につながる提案</div>
+        <div class="reason-desc">課題に合わせたアドバイスで<br>次の行動が明確に</div>
       </div>
-      <nav aria-label="サポート・法務">
-        <a href="./support/">サポート</a><a href="./privacy/">プライバシーポリシー</a><a href="./terms/">利用規約</a><a href="./commerce/">特定商取引法に基づく表記</a><a href="./licenses/">ライセンス</a>
-      </nav>
+      <div>
+        <div class="reason-photo"><img class="pos-38" src="assets/lp/reason-fun.jpg" alt="スイングするゴルファー"></div>
+        <div class="reason-name">ゴルフがもっと楽しくなる</div>
+        <div class="reason-desc">成長を実感できて、<br>ラウンドがもっと充実</div>
+      </div>
     </div>
-    <div class="apple-credit">Apple、Appleのロゴ、Apple Watch、App StoreおよびiPhoneは、米国およびその他の国で登録されたApple Inc.の商標です。</div>
-    <div class="copyright">Copyright &copy; 2026 mightybell LLC. All rights reserved.</div>
-  </footer>
+  </div>
+</section>
+
+<!-- ============ FEATURES GRID ============ -->
+<section class="features">
+  <div class="inner">
+    <h2>充実の機能</h2>
+    <div class="features-grid">
+      <div class="feature"><div class="tile"><img src="assets/lp/icon-phone-tap.png" alt=""></div><div class="name">ショット記録</div><div class="desc">タップするだけで<br>かんたん記録</div></div>
+      <div class="feature"><div class="tile"><img src="assets/lp/icon-map-pin.png" alt=""></div><div class="name">ショットマップ</div><div class="desc">軌跡と飛距離を<br>マップで可視化</div></div>
+      <div class="feature"><div class="tile"><img src="assets/lp/icon-calculator.png" alt=""></div><div class="name">スコア管理</div><div class="desc">スコア・パット・ペナを<br>まとめて管理</div></div>
+      <div class="feature"><div class="tile"><img src="assets/lp/icon-bar-chart.png" alt=""></div><div class="name">統計・分析</div><div class="desc">得点・課題を<br>グラフで分析</div></div>
+      <div class="feature"><div class="tile"><img src="assets/lp/icon-gear.png" alt=""></div><div class="name">改善アドバイス</div><div class="desc">次につながる<br>アドバイスを提案</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing">
+  <div class="inner">
+    <h2>料金プラン</h2>
+    <p class="lead">まずは無料で。もっと伸ばしたくなったら Premium へ。</p>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <div class="plan-name">FREE</div>
+            <div class="plan-sub">ずっと無料</div>
+          </th>
+          <th>
+            <div class="plan-badge">おすすめ</div>
+            <div class="plan-name premium">Premium</div>
+            <div class="plan-sub">分析をフル活用</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr-group free-group"><td colspan="3">全プランで使える機能（無料）</td></tr>
+        <tr><td class="feat">ショット・スコアの記録</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">ショットマップの確認</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">スコア・パット・ペナの管理</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr class="tr-group premium-group"><td colspan="3">Premium限定の機能（詳細分析・改善サポート）</td></tr>
+        <tr><td class="feat">統計・分析（詳細データ）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">改善アドバイス（パーソナル提案）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">練習メニューの提案</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">データエクスポート（CSV）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">複数ラウンドの比較分析</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr class="tr-price">
+          <td class="feat">月額料金</td>
+          <td class="free-price">¥0</td>
+          <td class="premium-price premium-col"><div class="trial">初月無料</div><div class="amount"><span class="gold">¥300</span><small> /月</small></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="signup" class="cta">
+  <div class="inner">
+    <div class="cta-grid">
+      <div class="cta-visual">
+        <img src="assets/lp/cta-devices.png" alt="18 Score アプリ（iPhoneとApple Watch）">
+      </div>
+      <div class="cta-copy">
+        <div class="msg">18 Scoreで、<br>いちばんいいラウンドを、<br>もっと身近に。</div>
+        <a class="btn-gold" href="mailto:support@18score.app?subject=18%20Score%20事前登録（配信開始のお知らせ希望）">事前登録する（無料）</a>
+        <div class="cta-note">配信開始時にいち早くお知らせします</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="inner">
+    <img src="assets/lp/logo.png" alt="18 Score">
+    <nav class="footer-nav" aria-label="サポート・法務">
+      <a href="./support/">サポート</a>
+      <a href="./privacy/">プライバシーポリシー</a>
+      <a href="./terms/">利用規約</a>
+      <a href="./commerce/">特定商取引法に基づく表記</a>
+      <a href="./licenses/">ライセンス</a>
+    </nav>
+    <div class="footer-copy">Copyright &copy; 2026 mightybell LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+</div>
 </body>
 </html>
