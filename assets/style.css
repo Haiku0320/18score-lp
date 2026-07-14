@@ -38,6 +38,8 @@ th{width:30%;color:var(--muted);font-weight:700}
 .mail-cta{display:inline-flex;margin:16px 0;padding:12px 22px;border-radius:8px;color:#fff;background:var(--btn);font-weight:700;box-shadow:0 4px 12px rgba(47,107,75,.28)}
 .mail-cta:hover{color:#fff;background:var(--green);text-decoration:none}
 .back-link{display:inline-block;margin-top:38px;font-weight:700}
+.form-embed{margin:24px 0 8px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+.form-embed iframe{display:block;width:100%;height:640px;border:0}
 .card-links{display:grid;gap:12px;padding:0;margin:28px 0;list-style:none}
 .card-links a{display:block;padding:17px 20px;color:var(--ink);border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:700}
 .card-links a:hover{border-color:var(--gold);text-decoration:none}
