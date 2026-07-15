@@ -110,11 +110,15 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .card-label{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px;flex-shrink:0}
 .card-body{flex:1;display:flex;flex-direction:column;justify-content:center}
 .card-center{text-align:center;display:flex;flex-direction:column;justify-content:center}
-.chart-img{width:100%;height:76px;object-fit:contain;object-position:center}
+.chart-img{display:block;width:100%;height:auto}
 .chart-axis{display:flex;justify-content:space-between;font-size:9px;color:#a8a89f;margin-top:5px}
 .big-num{font-size:30px;font-weight:900;color:var(--green);line-height:1.1}
 .big-num small{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
 .donut{width:78px;height:78px;margin:0 auto;border-radius:50%;display:grid;place-items:center}
+.putt-bar{display:flex;width:100%;height:14px;border-radius:7px;overflow:hidden;gap:2px}
+.putt-bar span{display:block;height:100%;border-radius:2px}
+.putt-bar span:first-child{border-radius:7px 2px 2px 7px}
+.putt-bar span:last-child{border-radius:2px 7px 7px 2px}
 .putt-legend{display:flex;justify-content:center;gap:7px 10px;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.4}
 .putt-legend i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:3px}
 .donut>div{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;font-weight:900;color:var(--green)}
@@ -391,8 +395,12 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       <div class="card" style="text-align:center">
         <div class="card-label" style="margin-bottom:6px">平均パット数</div>
         <div class="card-body">
-          <div class="big-num" style="margin-bottom:10px">1.8<small>パット</small></div>
-          <div class="donut" style="background:conic-gradient(#3E7A53 0 29.7%,#fff 29.7% 30.3%,#9CC3A9 30.3% 89.7%,#fff 89.7% 90.3%,#B65F41 90.3% 99.7%,#fff 99.7% 100%)"><div></div></div>
+          <div class="big-num" style="margin-bottom:14px">1.8<small>パット</small></div>
+          <div class="putt-bar">
+            <span style="width:30%;background:#3E7A53"></span>
+            <span style="width:60%;background:#9CC3A9"></span>
+            <span style="width:10%;background:#B65F41"></span>
+          </div>
           <div class="putt-legend"><span><i style="background:#3E7A53"></i>1パット 30%</span><span><i style="background:#9CC3A9"></i>2パット 60%</span><span><i style="background:#B65F41"></i>3パット+ 10%</span></div>
         </div>
       </div>
