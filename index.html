@@ -129,6 +129,8 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .minus{color:var(--check)}
 .advice{display:flex;flex-direction:column}
 .advice p{margin:0 0 10px;font-size:12px;line-height:1.75;color:var(--ink)}
+.mock-note{margin:10px 2px 0;font-size:10px;color:#a8a89f;text-align:right}
+.mock-note.on-dark{color:rgba(255,255,255,.45)}
 
 /* ---------- course insight (dark) ---------- */
 .insight{position:relative;background:#0a130c;overflow:hidden}
@@ -419,9 +421,10 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       </div>
       <div class="card advice">
         <div class="card-label">アドバイス</div>
-        <p>パーオン率が低めです。アイアンの精度向上がスコアアップの鍵です。</p>
+        <p>ティーショットの58%が右方向へ。OBの主因です。次のラウンドはフェアウェイ左サイド狙いから試しましょう。</p>
       </div>
     </div>
+    <p class="mock-note">※画面・数値は表示イメージです</p>
   </div>
 </section>
 
@@ -435,11 +438,12 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       <div class="insight-card">
         <div class="k">あなたの課題</div>
         <div class="v">ドライバーの右へのミスが多い</div>
-        <div class="k">影響</div>
-        <div class="v">1ラウンド平均 <b>1.8</b> 打のロス</div>
+        <div class="k">根拠</div>
+        <div class="v">ティーショットの <b>58%</b> が右方向・OBの主因</div>
         <div class="k">改善のヒント</div>
-        <div class="hint">右サイドのミスを減らし、<br>フェアウェイキープ率を向上させよう</div>
+        <div class="hint">フェアウェイ左サイド狙いで、<br>右のミスをOBにしない</div>
       </div>
+      <p class="mock-note on-dark">※画面・数値は表示イメージです</p>
     </div>
   </div>
 </section>
@@ -479,7 +483,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <!-- ============ REASONS ============ -->
 <section class="reasons">
   <div class="inner">
-    <h2>18 Scoreが選ばれる理由</h2>
+    <h2>18 Scoreのこだわり</h2>
     <div class="reasons-grid">
       <div>
         <div class="reason-photo"><img src="assets/lp/reason-record.jpg" alt="手元で18 Scoreを操作している様子"></div>
@@ -544,12 +548,13 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
         <tr><td class="feat">ショット・スコアの記録</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
         <tr><td class="feat">ショットマップの確認</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
         <tr><td class="feat">スコア・パット・ペナの管理</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
-        <tr class="tr-group premium-group"><td colspan="3">Premium限定の機能（詳細分析・改善サポート）</td></tr>
-        <tr><td class="feat">統計・分析（詳細データ）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
-        <tr><td class="feat">改善アドバイス（パーソナル提案）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
-        <tr><td class="feat">練習メニューの提案</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
-        <tr><td class="feat">データエクスポート（CSV）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
-        <tr><td class="feat">複数ラウンドの比較分析</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">基本の分析（スコア推移・パーオン率・パット・クラブ別平均飛距離 など）</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">データのバックアップ（ファイル書き出し・復元）</td><td class="mark"><img class="check-free" src="assets/lp/icon-checkmark.png" alt="対応"></td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr class="tr-group premium-group"><td colspan="3">Premium限定の機能（さらに深い分析・改善サポート）</td></tr>
+        <tr><td class="feat">クラブ別分析（クラブごとの統計・ショット履歴）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">解析コメント・練習ポイントの提案</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">スコア内訳の推移</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
+        <tr><td class="feat">マイカルテ（強み・弱みのチャート）</td><td class="mark dash">—</td><td class="mark premium-col"><span class="check-badge"><img src="assets/lp/icon-checkmark.png" alt="対応"></span></td></tr>
         <tr class="tr-price">
           <td class="feat">月額料金</td>
           <td class="free-price">¥0</td>
