@@ -31,13 +31,56 @@
     TestFlight（ベータ版）のご案内も予定しています。
   </p>
 
-  <div class="form-embed">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeEqY21S0TGIHhBkKnlo56M51MdAswi7fOxE2R1OGY2meyiag/viewform?embedded=true" title="18 Score 事前登録フォーム" loading="lazy">読み込んでいます…</iframe>
+  <form id="suForm" class="su-form" novalidate>
+    <label class="su-label" for="suEmail">メールアドレス</label>
+    <input class="su-input" id="suEmail" name="email" type="email" required placeholder="you@example.com" autocomplete="email" inputmode="email">
+    <p class="su-field-error" id="suEmailError" hidden>メールアドレスの形式で入力してください</p>
+    <div class="su-label">ご利用のスマートフォン</div>
+    <div class="su-radios" role="radiogroup" aria-label="ご利用のスマートフォン">
+      <label><input type="radio" name="device" value="iPhone"><span>iPhone</span></label>
+      <label><input type="radio" name="device" value="Android"><span>Android</span></label>
+      <label><input type="radio" name="device" value="その他（スマートフォン以外 など）"><span>その他</span></label>
+    </div>
+    <p class="su-field-error" id="suDeviceError" hidden>いずれかを選択してください</p>
+    <input type="text" name="company" class="su-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="su-submit" id="suSubmit" type="submit">事前登録する（無料）</button>
+    <p class="su-privacy">ご入力いただいたメールアドレスは、配信開始のお知らせとTestFlight（ベータ版）のご案内の送付のみに利用します。詳しくは<a href="../privacy/">プライバシーポリシー</a>へ</p>
+    <p class="su-field-error" id="suSendError" hidden>送信できませんでした。時間をおいて再度お試しいただくか、<a href="mailto:support@18score.app">support@18score.app</a> までご連絡ください</p>
+  </form>
+
+  <div id="suDone" class="su-done" hidden>
+    <b>ご登録ありがとうございます</b>
+    <p>18 Scoreの配信開始時に、いち早くご案内をお送りします</p>
   </div>
 
-  <p class="note">
-    フォームが表示されない場合は<a href="https://docs.google.com/forms/d/e/1FAIpQLSeEqY21S0TGIHhBkKnlo56M51MdAswi7fOxE2R1OGY2meyiag/viewform" target="_blank" rel="noopener">こちら</a>からご登録ください。ご入力いただいた情報の取扱いについては<a href="../privacy/">プライバシーポリシー</a>をご覧ください。
-  </p>
+  <script>
+  (function () {
+    var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEqY21S0TGIHhBkKnlo56M51MdAswi7fOxE2R1OGY2meyiag/formResponse';
+    var form = document.getElementById('suForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('suEmail').value.trim();
+      var device = form.querySelector('input[name="device"]:checked');
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      document.getElementById('suEmailError').hidden = emailOk;
+      document.getElementById('suDeviceError').hidden = !!device;
+      document.getElementById('suSendError').hidden = true;
+      if (!emailOk || !device) return;
+      if (form.querySelector('.su-hp').value) { form.hidden = true; document.getElementById('suDone').hidden = false; return; }
+      var btn = document.getElementById('suSubmit');
+      btn.disabled = true; btn.textContent = '送信中…';
+      var body = new URLSearchParams();
+      body.append('entry.1832670985', email);
+      body.append('entry.1499831962', device.value);
+      fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body })
+        .then(function () { form.hidden = true; document.getElementById('suDone').hidden = false; })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = '事前登録する（無料）';
+          document.getElementById('suSendError').hidden = false;
+        });
+    });
+  })();
+  </script>
 
   <a class="back-link" href="../">&larr; 18 Score トップへ</a>
 </main>
