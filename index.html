@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#164534">
-<title>18 Score｜毎ラウンド、次に直す1点がわかる。</title>
-<meta name="description" content="ゴルフスコア管理アプリ「18 Score」。各ショットをタップするだけで自動記録、GPSでショット位置と飛距離を可視化。スコアもショットもまとめて分析し、次のラウンドに活きる改善提案を届けます。">
-<meta property="og:title" content="18 Score｜毎ラウンド、次に直す1点がわかる。">
-<meta property="og:description" content="記録はかんたん。分析はまかせて。タップするだけのショット記録と、次につながるAIラウンド分析。">
+<title>18 Score｜AI時代のスコアカウンター</title>
+<meta name="description" content="ゴルフスコア管理アプリ「18 Score」。記録はかんたん、分析はおまかせ。タップするだけのスコア・ショット記録と、次のラウンドに活きるAIラウンド分析。">
+<meta property="og:title" content="18 Score｜AI時代のスコアカウンター">
+<meta property="og:description" content="記録はかんたん、分析はおまかせ。タップするだけのスコア記録と、次につながるAIラウンド分析。">
 <meta property="og:type" content="website">
 <link rel="icon" href="../design/app_icon_ios_1024.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,6 +91,7 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .record-copy{margin-top:96px}
 .record h2{margin:0 0 20px;font-size:26px;font-weight:900;color:var(--green);line-height:1.4}
 .record p{margin:0 0 22px;font-size:14px;color:var(--ink);line-height:1.9}
+.simple-pill{display:inline-block;background:#f1f5f2;border:1px solid #cfe0d5;color:var(--green);font-size:13px;font-weight:700;line-height:1.7;border-radius:10px;padding:8px 14px;margin-bottom:22px}
 .record-points{display:flex;gap:12px}
 .record-point{flex:1;text-align:center}
 .record-point .tile{width:62px;height:62px;margin:0 auto 10px;border-radius:14px;background:var(--bg);display:grid;place-items:center}
@@ -284,10 +285,10 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
     <div class="hero-grid">
       <div>
         <div class="hero-badge">AIラウンド分析</div>
-        <h1>毎ラウンド、<br>次に直す <span class="hl">1点</span> がわかる。</h1>
-        <p class="hero-sub">記録はかんたん。分析はまかせて。</p>
+        <h1>記録は<span class="hl">かんたん</span>、<br>分析はおまかせ</h1>
+        <p class="hero-sub">AI時代のスコアカウンター</p>
         <ul class="hero-checks">
-          <li><img src="assets/lp/icon-check-circle.png" alt="">各ショットをタップするだけで自動記録</li>
+          <li><img src="assets/lp/icon-check-circle.png" alt="">スコアカウンター感覚で、タップするだけ</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">GPSでショット位置と飛距離を可視化</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">スコアもショットもまとめて分析</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">次のラウンドに活きる改善提案</li>
@@ -304,7 +305,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <!-- ============ BEFORE / AFTER ============ -->
 <section class="ba">
   <div class="inner">
-    <h2>なんとなくの記録を、<span class="gold">次につながる改善</span>へ。</h2>
+    <h2>なんとなくの記録を、<span class="gold">次につながる改善</span>へ</h2>
     <div class="ba-grid">
       <div class="ba-card before">
         <div class="ba-photo"></div>
@@ -346,8 +347,9 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
   <div class="inner">
     <div class="record-grid">
       <div class="record-copy">
-        <h2>打ったあとは、<br>ショット地点を自動記録。</h2>
+        <h2>打ったあとは、<br>ショット地点を自動記録</h2>
         <p>各ショットの後にタップするだけ。<br>GPSが位置を記録し、あとから<br>ショットの軌跡と飛距離を<br>マップ上に可視化します。</p>
+        <div class="simple-pill">スコアだけのシンプル記録もOK。<br>しっかり残すならクラブ別記録で</div>
         <div class="record-points">
           <div class="record-point">
             <div class="tile"><img src="assets/lp/icon-hand-tap.png" alt=""></div>
@@ -373,7 +375,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <!-- ============ ANALYZE DASHBOARD ============ -->
 <section class="analyze">
   <div class="inner">
-    <h2>すべての記録を、わかりやすく分析。</h2>
+    <h2>すべての記録を、わかりやすく分析</h2>
     <div class="dash-row1">
       <div class="card">
         <div class="card-label">スコア推移</div>
@@ -433,7 +435,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
   <img class="insight-bg" src="assets/lp/course-map.jpg" alt="">
   <div class="inner">
     <div class="insight-copy">
-      <h2>データが示す「課題」で、<br>スコアを変える。</h2>
+      <h2>データが示す「課題」で、<br>スコアを変える</h2>
       <p class="insight-lead">あなたのラウンドデータを分析し、<br>最も改善効果の高いポイントを提案します。</p>
       <div class="insight-card">
         <div class="k">あなたの課題</div>
@@ -451,7 +453,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <!-- ============ 4 STEPS ============ -->
 <section class="steps">
   <div class="inner">
-    <h2>かんたん4ステップ。ラウンドがもっとシンプルに。</h2>
+    <h2>かんたん4ステップ。ラウンドがもっとシンプルに</h2>
     <div class="steps-grid">
       <div class="step">
         <div class="tile"><img src="assets/lp/icon-phone-tap.png" alt=""></div>
@@ -527,7 +529,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <section class="pricing">
   <div class="inner">
     <h2>料金プラン</h2>
-    <p class="lead">まずは無料で。もっと伸ばしたくなったら Premium へ。</p>
+    <p class="lead">まずは無料で。もっと伸ばしたくなったら Premium へ</p>
     <table class="price-table">
       <thead>
         <tr>
@@ -573,7 +575,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
         <img src="assets/lp/cta-devices.png" alt="18 Score アプリ（iPhoneとApple Watch）">
       </div>
       <div class="cta-copy">
-        <div class="msg">18 Scoreで、<br>いちばんいいラウンドを、<br>もっと身近に。</div>
+        <div class="msg">18 Scoreで、<br>いちばんいいラウンドを、<br>もっと身近に</div>
         <a class="btn-gold" href="./signup/">事前登録する（無料）</a>
         <div class="cta-note">配信開始時にいち早くお知らせします</div>
       </div>
