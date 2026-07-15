@@ -6,6 +6,7 @@
 <title>事前登録｜18 Score</title>
 <meta name="description" content="18 Scoreの事前登録。配信開始のお知らせとTestFlight（ベータ版）のご案内をいち早くお届けします。">
 <link rel="icon" href="../../design/app_icon_ios_1024.png">
+<script src="../assets/analytics.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -73,7 +74,10 @@
       body.append('entry.1832670985', email);
       body.append('entry.1499831962', device.value);
       fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body })
-        .then(function () { form.hidden = true; document.getElementById('suDone').hidden = false; })
+        .then(function () {
+          form.hidden = true; document.getElementById('suDone').hidden = false;
+          if (typeof window.gtag === 'function') { gtag('event', 'sign_up', { method: 'preregistration' }); }
+        })
         .catch(function () {
           btn.disabled = false; btn.textContent = '事前登録する（無料）';
           document.getElementById('suSendError').hidden = false;
