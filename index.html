@@ -106,14 +106,16 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .dash-row1{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 .dash-row2{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}
-.card-label{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px}
+.dash-row1 .card{display:flex;flex-direction:column}
+.card-label{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px;flex-shrink:0}
+.card-body{flex:1;display:flex;flex-direction:column;justify-content:center}
 .card-center{text-align:center;display:flex;flex-direction:column;justify-content:center}
 .chart-img{width:100%;height:76px;object-fit:contain;object-position:center}
 .chart-axis{display:flex;justify-content:space-between;font-size:9px;color:#a8a89f;margin-top:5px}
 .big-num{font-size:30px;font-weight:900;color:var(--green);line-height:1.1}
 .big-num small{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
 .donut{width:78px;height:78px;margin:0 auto;border-radius:50%;display:grid;place-items:center}
-.putt-legend{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:8px;line-height:1.4}
+.putt-legend{display:flex;justify-content:center;gap:7px 10px;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.4}
 .putt-legend i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:3px}
 .donut>div{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;font-weight:900;color:var(--green)}
 .stat-list{display:flex;flex-direction:column;gap:8px;font-size:11px}
@@ -219,7 +221,7 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .cta-visual{display:flex;justify-content:center;align-items:flex-end;padding:22px 0 0;overflow:hidden}
 .cta-visual img{width:118%;max-width:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.4))}
 .cta-copy{padding:34px 34px 34px 20px}
-.cta-copy .msg{font-size:20px;font-weight:900;color:#fff;line-height:1.55;margin-bottom:20px}
+.cta-copy .msg{font-size:20px;font-weight:900;color:#fff;line-height:1.55;margin-bottom:20px;text-align:center}
 .btn-gold{display:block;background:var(--gold);color:#fff;font-weight:900;font-size:16px;padding:16px;border-radius:9px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 a.btn-gold:hover{color:#fff;background:#b8873a}
 .cta-note{font-size:10.5px;color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
@@ -381,22 +383,30 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
     <div class="dash-row1">
       <div class="card">
         <div class="card-label">スコア推移</div>
-        <img class="chart-img" src="assets/lp/chart-score-trend.png" alt="スコア推移グラフ">
-        <div class="chart-axis"><span>3/1</span><span>6/1</span><span>7/1</span><span>8/1</span><span>9/1</span></div>
+        <div class="card-body">
+          <img class="chart-img" src="assets/lp/chart-score-trend.png" alt="スコア推移グラフ">
+          <div class="chart-axis"><span>3/1</span><span>6/1</span><span>7/1</span><span>8/1</span><span>9/1</span></div>
+        </div>
       </div>
       <div class="card" style="text-align:center">
         <div class="card-label" style="margin-bottom:6px">平均パット数</div>
-        <div class="big-num" style="margin-bottom:8px">1.8<small>パット</small></div>
-        <div class="donut" style="background:conic-gradient(#3E7A53 0 29.7%,#fff 29.7% 30.3%,#9CC3A9 30.3% 89.7%,#fff 89.7% 90.3%,#B65F41 90.3% 99.7%,#fff 99.7% 100%)"><div></div></div>
-        <div class="putt-legend"><span><i style="background:#3E7A53"></i>1パット 30%</span><span><i style="background:#9CC3A9"></i>2パット 60%</span><span><i style="background:#B65F41"></i>3パット+ 10%</span></div>
+        <div class="card-body">
+          <div class="big-num" style="margin-bottom:10px">1.8<small>パット</small></div>
+          <div class="donut" style="background:conic-gradient(#3E7A53 0 29.7%,#fff 29.7% 30.3%,#9CC3A9 30.3% 89.7%,#fff 89.7% 90.3%,#B65F41 90.3% 99.7%,#fff 99.7% 100%)"><div></div></div>
+          <div class="putt-legend"><span><i style="background:#3E7A53"></i>1パット 30%</span><span><i style="background:#9CC3A9"></i>2パット 60%</span><span><i style="background:#B65F41"></i>3パット+ 10%</span></div>
+        </div>
       </div>
       <div class="card" style="text-align:center">
         <div class="card-label">フェアウェイキープ率</div>
-        <div class="donut" style="background:conic-gradient(var(--check) 0 28%,#e4e7e1 28% 100%)"><div>28%</div></div>
+        <div class="card-body">
+          <div class="donut" style="background:conic-gradient(var(--check) 0 28%,#e4e7e1 28% 100%)"><div>28%</div></div>
+        </div>
       </div>
       <div class="card" style="text-align:center">
         <div class="card-label">パーオン率</div>
-        <div class="donut" style="background:conic-gradient(var(--check) 0 26%,#e4e7e1 26% 100%)"><div>26%</div></div>
+        <div class="card-body">
+          <div class="donut" style="background:conic-gradient(var(--check) 0 26%,#e4e7e1 26% 100%)"><div>26%</div></div>
+        </div>
       </div>
     </div>
     <div class="dash-row2">
@@ -579,7 +589,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
         <img src="assets/lp/cta-devices.png" alt="18 Score アプリ（iPhoneとApple Watch）">
       </div>
       <div class="cta-copy">
-        <div class="msg">記録はかんたん、<br>分析はおまかせ</div>
+        <div class="msg">記録はかんたん、分析はおまかせ</div>
         <a class="btn-gold" href="./signup/">事前登録する（無料）</a>
         <div class="cta-note">配信開始時にいち早くお知らせします</div>
       </div>
