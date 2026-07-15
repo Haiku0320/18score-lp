@@ -110,7 +110,7 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .card-label{font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:8px;flex-shrink:0}
 .card-body{flex:1;display:flex;flex-direction:column;justify-content:center}
 .card-center{text-align:center;display:flex;flex-direction:column;justify-content:center}
-.chart-img{display:block;width:100%;height:auto}
+.chart-svg{display:block;width:100%;height:96px}
 .chart-axis{display:flex;justify-content:space-between;font-size:9px;color:#a8a89f;margin-top:5px}
 .big-num{font-size:30px;font-weight:900;color:var(--green);line-height:1.1}
 .big-num small{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
@@ -388,7 +388,20 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       <div class="card">
         <div class="card-label">スコア推移</div>
         <div class="card-body">
-          <img class="chart-img" src="assets/lp/chart-score-trend.png" alt="スコア推移グラフ">
+          <svg class="chart-svg" viewBox="0 0 420 96" preserveAspectRatio="none" role="img" aria-label="スコア推移グラフ（下がるほど良い）">
+            <line x1="0" y1="24" x2="420" y2="24" stroke="#eceae2" stroke-width="1"/>
+            <line x1="0" y1="48" x2="420" y2="48" stroke="#eceae2" stroke-width="1"/>
+            <line x1="0" y1="72" x2="420" y2="72" stroke="#eceae2" stroke-width="1"/>
+            <polyline points="10,17 66,26 123,44 181,39 239,61 296,66 354,70 410,79" fill="none" stroke="#2f6a4b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="10" cy="17" r="5" fill="#fff" stroke="#2f6a4b" stroke-width="2.5"/>
+            <circle cx="66" cy="26" r="5" fill="#fff" stroke="#2f6a4b" stroke-width="2.5"/>
+            <circle cx="123" cy="44" r="5" fill="#2f6a4b"/>
+            <circle cx="181" cy="39" r="5" fill="#fff" stroke="#2f6a4b" stroke-width="2.5"/>
+            <circle cx="239" cy="61" r="5" fill="#2f6a4b"/>
+            <circle cx="296" cy="66" r="5" fill="#2f6a4b"/>
+            <circle cx="354" cy="70" r="5" fill="#fff" stroke="#2f6a4b" stroke-width="2.5"/>
+            <circle cx="410" cy="79" r="5" fill="#2f6a4b"/>
+          </svg>
           <div class="chart-axis"><span>3/1</span><span>6/1</span><span>7/1</span><span>8/1</span><span>9/1</span></div>
         </div>
       </div>
