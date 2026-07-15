@@ -113,6 +113,8 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .big-num{font-size:30px;font-weight:900;color:var(--green);line-height:1.1}
 .big-num small{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
 .donut{width:78px;height:78px;margin:0 auto;border-radius:50%;display:grid;place-items:center}
+.putt-legend{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:8px;line-height:1.4}
+.putt-legend i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:3px}
 .donut>div{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;font-weight:900;color:var(--green)}
 .stat-list{display:flex;flex-direction:column;gap:8px;font-size:11px}
 .stat-list>div{display:flex;justify-content:space-between}
@@ -382,9 +384,11 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
         <img class="chart-img" src="assets/lp/chart-score-trend.png" alt="スコア推移グラフ">
         <div class="chart-axis"><span>3/1</span><span>6/1</span><span>7/1</span><span>8/1</span><span>9/1</span></div>
       </div>
-      <div class="card card-center">
+      <div class="card" style="text-align:center">
         <div class="card-label" style="margin-bottom:6px">平均パット数</div>
-        <div class="big-num">1.8<small>パット</small></div>
+        <div class="big-num" style="margin-bottom:8px">1.8<small>パット</small></div>
+        <div class="donut" style="background:conic-gradient(#3E7A53 0 29.7%,#fff 29.7% 30.3%,#9CC3A9 30.3% 89.7%,#fff 89.7% 90.3%,#B65F41 90.3% 99.7%,#fff 99.7% 100%)"><div></div></div>
+        <div class="putt-legend"><span><i style="background:#3E7A53"></i>1パット 30%</span><span><i style="background:#9CC3A9"></i>2パット 60%</span><span><i style="background:#B65F41"></i>3パット+ 10%</span></div>
       </div>
       <div class="card" style="text-align:center">
         <div class="card-label">フェアウェイキープ率</div>
