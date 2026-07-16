@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>事前登録｜18 Score</title>
-<meta name="description" content="18 Scoreの事前登録。配信開始のお知らせとTestFlight（ベータ版）のご案内をいち早くお届けします。">
+<title>先行体験登録｜18 Score</title>
+<meta name="description" content="18 Scoreの先行体験登録。配信前のアプリ（TestFlight ベータ版）を、いち早く無料でお試しいただけます。">
 <link rel="icon" href="../../design/app_icon_ios_1024.png">
 <script src="../assets/analytics.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,10 +26,10 @@
 </header>
 
 <main>
-  <h1>事前登録</h1>
+  <h1>先行体験登録</h1>
   <p class="lede">
-    18 Scoreの配信開始時に、いち早くご案内をお送りします。<br>
-    TestFlight（ベータ版）のご案内も予定しています。
+    配信を待たずに、18 Scoreをいち早く。<br>
+    ご登録の方へ、TestFlight（ベータ版）のご案内をお送りします。
   </p>
 
   <form id="suForm" class="su-form" novalidate>
@@ -44,14 +44,14 @@
     </div>
     <p class="su-field-error" id="suDeviceError" hidden>いずれかを選択してください</p>
     <input type="text" name="company" class="su-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="su-submit" id="suSubmit" type="submit">事前登録する（無料）</button>
+    <button class="su-submit" id="suSubmit" type="submit">先行体験登録</button>
     <p class="su-privacy">ご入力いただいたメールアドレスは、配信開始のお知らせとTestFlight（ベータ版）のご案内の送付のみに利用します。詳しくは<a href="../privacy/">プライバシーポリシー</a>へ</p>
     <p class="su-field-error" id="suSendError" hidden>送信できませんでした。時間をおいて再度お試しいただくか、<a href="mailto:support@18score.app">support@18score.app</a> までご連絡ください</p>
   </form>
 
   <div id="suDone" class="su-done" hidden>
     <b>ご登録ありがとうございます</b>
-    <p>18 Scoreの配信開始時に、いち早くご案内をお送りします</p>
+    <p>TestFlight（ベータ版）のご案内を、いち早くお送りします</p>
   </div>
 
   <script>
@@ -82,7 +82,7 @@
           }
         })
         .catch(function () {
-          btn.disabled = false; btn.textContent = '事前登録する（無料）';
+          btn.disabled = false; btn.textContent = '先行体験登録';
           document.getElementById('suSendError').hidden = false;
         });
     });
