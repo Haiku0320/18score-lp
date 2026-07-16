@@ -144,8 +144,9 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 
 /* ---------- course insight (dark) ---------- */
 .insight{position:relative;background:#0a130c;overflow:hidden}
-.insight-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.96}
-.insight .inner{position:relative;padding:52px 30px 54px}
+.insight-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.96;z-index:0}
+.insight::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,16,10,.93) 0%,rgba(8,16,10,.74) 44%,rgba(8,16,10,.32) 100%)}
+.insight .inner{position:relative;z-index:2;padding:52px 30px 54px}
 .insight-copy{max-width:340px}
 .insight-eyebrow{font-size:11px;font-weight:800;letter-spacing:.26em;color:var(--gold);margin:0 0 12px}
 .insight h2{margin:0 0 6px;font-size:22px;font-weight:900;color:#fff;line-height:1.4}
@@ -261,6 +262,8 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
   .features-grid{grid-template-columns:repeat(3,1fr);gap:14px 10px}
   .insight .inner{padding:36px 18px}
   .insight-bg{transform:scale(1)}
+  .insight::before{background:linear-gradient(180deg,rgba(8,16,10,.9) 0%,rgba(8,16,10,.74) 42%,rgba(8,16,10,.93) 100%)}
+  .insight-card{background:rgba(8,20,12,.88)}
   .cta-grid{grid-template-columns:1fr}
   .cta-copy{padding:28px 22px 32px}
   .cta-visual{order:2;padding:8px 0 0}
