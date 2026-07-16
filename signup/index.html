@@ -76,7 +76,10 @@
       fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body })
         .then(function () {
           form.hidden = true; document.getElementById('suDone').hidden = false;
-          if (typeof window.gtag === 'function') { gtag('event', 'sign_up', { method: 'preregistration' }); }
+          if (typeof window.gtag === 'function') {
+            gtag('event', 'sign_up', { method: 'preregistration' });
+            gtag('event', 'qualify_lead', { method: 'preregistration' }); // GA4キーイベント(コンバージョン)
+          }
         })
         .catch(function () {
           btn.disabled = false; btn.textContent = '事前登録する（無料）';
