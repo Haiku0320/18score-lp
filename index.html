@@ -143,14 +143,14 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .mock-note.on-dark{color:rgba(255,255,255,.45)}
 
 /* ---------- course insight (dark) ---------- */
-.insight{position:relative;background:#0a130c;overflow:hidden}
-.insight-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.96;z-index:0}
-.insight::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,16,10,.93) 0%,rgba(8,16,10,.74) 44%,rgba(8,16,10,.32) 100%)}
-.insight .inner{position:relative;z-index:2;padding:52px 30px 54px}
+.insight{position:relative;background:#00070e;overflow:hidden}
+.insight-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.96}
+.insight .inner{position:relative;padding:52px 30px 54px}
 .insight-copy{max-width:340px}
 .insight-eyebrow{font-size:11px;font-weight:800;letter-spacing:.26em;color:var(--gold);margin:0 0 12px}
 .insight h2{margin:0 0 6px;font-size:22px;font-weight:900;color:#fff;line-height:1.4}
 .insight-lead{margin:0 0 18px;font-size:12px;color:rgba(255,255,255,.72);line-height:1.8}
+.insight-photo{display:none}
 .insight-card{background:rgba(10,30,18,.66);border:1px solid rgba(201,162,74,.45);border-radius:12px;padding:16px 18px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .insight-card .k{font-size:11.5px;font-weight:700;color:var(--gold);margin-bottom:3px}
 .insight-card .v{font-size:13px;color:#fff;margin-bottom:11px;font-weight:500}
@@ -260,10 +260,12 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
   .step-arrow{display:none}
   .reasons-grid{grid-template-columns:1fr 1fr}
   .features-grid{grid-template-columns:repeat(3,1fr);gap:14px 10px}
-  .insight .inner{padding:36px 18px}
-  .insight-bg{transform:scale(1)}
-  .insight::before{background:linear-gradient(180deg,rgba(8,16,10,.9) 0%,rgba(8,16,10,.74) 42%,rgba(8,16,10,.93) 100%)}
-  .insight-card{background:rgba(8,20,12,.88)}
+  .insight .inner{padding:32px 20px 36px}
+  .insight-bg{display:none}
+  .insight-copy{max-width:none}
+  .insight-lead{margin-bottom:14px}
+  .insight-photo{display:block;width:calc(100% + 40px);margin:0 -20px 8px;aspect-ratio:3/2;object-fit:cover;object-position:55% 50%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 93%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 93%,transparent 100%)}
+  .insight-card{background:rgba(10,30,18,.9);backdrop-filter:none}
   .cta-grid{grid-template-columns:1fr}
   .cta-copy{padding:28px 22px 32px}
   .cta-visual{order:2;padding:8px 0 0}
@@ -465,6 +467,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       <div class="insight-eyebrow">VISION</div>
       <h2>データで、<br>ゴルフの未来を変える。</h2>
       <p class="insight-lead">「何を直せばいいか分からない」——その答えは、あなたのラウンドのデータの中にあります。<br>私たちは、すべてのゴルファーがデータを味方にできる未来をつくります。</p>
+      <img class="insight-photo" src="assets/lp/course-map-mobile.jpg" alt="コースとラウンドデータのイメージ">
       <div class="insight-card">
         <div class="k">あなたの課題</div>
         <div class="v">ドライバーの右へのミスが多い</div>
