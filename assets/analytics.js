@@ -6,7 +6,7 @@
      置き換えて保存 → commit/push するだけで計測が始まります。
      置き換えるまでは Google へ一切データを送信しません（下のガード参照）。
    ===================================================================== */
-window.GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+window.GA_MEASUREMENT_ID = "G-31S26FWTV6";
 
 (function () {
   var id = window.GA_MEASUREMENT_ID;
