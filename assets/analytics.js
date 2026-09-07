@@ -1,35 +1,42 @@
-/* =====================================================================
-   18 Score  Web アクセス解析（Google Analytics 4）
-   ---------------------------------------------------------------------
-   ▼ 有効化のしかた（このファイルの1か所だけ変えればOK）
-     下の "G-XXXXXXXXXX" を、GA4 で発行した測定ID（例: G-ABCD1234EF）に
-     置き換えて保存 → commit/push するだけで計測が始まります。
-     置き換えるまでは Google へ一切データを送信しません（下のガード参照）。
-   ===================================================================== */
+/* 18 Score website analytics. This file is used only by public web pages. */
 window.GA_MEASUREMENT_ID = "G-31S26FWTV6";
 
 (function () {
+  var params = new URLSearchParams(window.location.search);
+  try {
+    if (params.get("analytics") === "off") {
+      window.localStorage.setItem("18score_analytics_opt_out", "1");
+    } else if (params.get("analytics") === "on") {
+      window.localStorage.removeItem("18score_analytics_opt_out");
+    }
+    if (window.localStorage.getItem("18score_analytics_opt_out") === "1") return;
+  } catch (_) {
+    if (params.get("analytics") === "off") return;
+  }
+
   var id = window.GA_MEASUREMENT_ID;
-  // プレースホルダのまま（未設定）なら、スクリプトを読み込まず送信もしない
   if (!id || id.indexOf("G-XXXX") === 0) return;
 
-  var s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
-  document.head.appendChild(s);
+  var script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+  document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function () { dataLayer.push(arguments); };
-  gtag("js", new Date());
-  gtag("config", id);
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", id, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    restricted_data_processing: true
+  });
 })();
 
-/* LP内の「事前登録」ボタン（/signup/ への導線）クリックを計測。
-   ボタンから実際の登録フォームへ進んだ数が分かる。 */
-document.addEventListener("click", function (e) {
-  var t = e.target;
-  var a = t && t.closest ? t.closest('a[href*="signup"]') : null;
-  if (a && typeof window.gtag === "function") {
-    gtag("event", "signup_click", { location: a.className || "cta" });
+/* Count movement to the TestFlight registration page, not accepted registrations. */
+document.addEventListener("click", function (event) {
+  var target = event.target;
+  var link = target && target.closest ? target.closest('a[href*="signup"]') : null;
+  if (link && typeof window.gtag === "function") {
+    window.gtag("event", "signup_click", { location: link.className || "cta" });
   }
 });

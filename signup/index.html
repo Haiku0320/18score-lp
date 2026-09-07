@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>先行体験登録｜18 Score</title>
-<meta name="description" content="18 Scoreの先行体験登録。配信前のアプリ（TestFlight ベータ版）を、いち早く無料でお試しいただけます。">
+<meta name="description" content="18 Scoreの先行体験登録。TestFlightベータ版を、いち早く無料でお試しいただけます。">
 <link rel="canonical" href="https://18score.app/signup/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="18 Score">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="https://18score.app/signup/">
 <meta property="og:title" content="先行体験登録｜18 Score">
-<meta property="og:description" content="配信前のアプリ（TestFlight ベータ版）を、いち早く無料でお試しいただけます。登録は30秒です。">
+<meta property="og:description" content="TestFlightベータ版を、いち早く無料でお試しいただけます。登録は30秒です。">
 <meta property="og:image" content="https://18score.app/assets/og-card.jpg">
 <meta property="og:image:secure_url" content="https://18score.app/assets/og-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -20,16 +20,13 @@
 <meta property="og:image:alt" content="18 Score｜記録はかんたん、分析はおまかせ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="先行体験登録｜18 Score">
-<meta name="twitter:description" content="配信前のアプリ（TestFlight ベータ版）を、いち早く無料でお試しいただけます。登録は30秒です。">
+<meta name="twitter:description" content="TestFlightベータ版を、いち早く無料でお試しいただけます。登録は30秒です。">
 <meta name="twitter:image" content="https://18score.app/assets/og-card.jpg">
 <meta name="twitter:image:alt" content="18 Score｜記録はかんたん、分析はおまかせ">
 <link rel="icon" href="../assets/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<script src="../assets/analytics.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/analytics.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -48,62 +45,59 @@
   <h1>先行体験登録</h1>
   <p class="lede">
     配信を待たずに、18 Scoreをいち早く。<br>
-    ご登録の方へ、TestFlight（ベータ版）のご案内をお送りします。
+    ご登録の方へ、iPhone向けTestFlightベータ版への招待と必要なご案内をお送りします。
   </p>
 
-  <form id="suForm" class="su-form" novalidate>
+  <form id="suForm" class="su-form" method="post" action="https://docs.google.com/forms/d/e/1FAIpQLSeEqY21S0TGIHhBkKnlo56M51MdAswi7fOxE2R1OGY2meyiag/formResponse" novalidate>
     <label class="su-label" for="suEmail">メールアドレス</label>
-    <input class="su-input" id="suEmail" name="email" type="email" required placeholder="you@example.com" autocomplete="email" inputmode="email">
+    <input class="su-input" id="suEmail" name="entry.1832670985" type="email" required placeholder="you@example.com" autocomplete="email" inputmode="email">
     <p class="su-field-error" id="suEmailError" hidden>メールアドレスの形式で入力してください</p>
+
     <div class="su-label">ご利用のスマートフォン</div>
     <div class="su-radios" role="radiogroup" aria-label="ご利用のスマートフォン">
-      <label><input type="radio" name="device" value="iPhone"><span>iPhone</span></label>
-      <label><input type="radio" name="device" value="Android"><span>Android</span></label>
-      <label><input type="radio" name="device" value="その他（スマートフォン以外 など）"><span>その他</span></label>
+      <label><input type="radio" name="entry.1499831962" value="iPhone"><span>iPhone</span></label>
+      <label><input type="radio" name="entry.1499831962" value="Android"><span>Android</span></label>
+      <label><input type="radio" name="entry.1499831962" value="その他（スマートフォン以外 など）"><span>その他</span></label>
     </div>
     <p class="su-field-error" id="suDeviceError" hidden>いずれかを選択してください</p>
+
     <input type="text" name="company" class="su-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="su-submit" id="suSubmit" type="submit">先行体験登録</button>
-    <p class="su-privacy">ご入力いただいたメールアドレスは、TestFlight（ベータ版）のご案内および配信に関するお知らせの送付のみに利用します。詳しくは<a href="../privacy/">プライバシーポリシー</a>へ</p>
-    <p class="su-field-error" id="suSendError" hidden>送信できませんでした。時間をおいて再度お試しいただくか、<a href="mailto:support@18score.app">support@18score.app</a> までご連絡ください</p>
+    <p class="su-privacy">入力した情報は、TestFlightベータ版への招待、登録受付と必要な連絡のために利用します。送信後は外部受付サービスの確認画面へ移動し、そこで表示される内容が正式な受付結果です。詳しくは<a href="../privacy/">プライバシーポリシー</a>をご確認ください。</p>
   </form>
-
-  <div id="suDone" class="su-done" hidden>
-    <b>ご登録ありがとうございます</b>
-    <p>TestFlight（ベータ版）のご案内を、いち早くお送りします</p>
-  </div>
 
   <script>
   (function () {
-    var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEqY21S0TGIHhBkKnlo56M51MdAswi7fOxE2R1OGY2meyiag/formResponse';
     var form = document.getElementById('suForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = document.getElementById('suEmail').value.trim();
-      var device = form.querySelector('input[name="device"]:checked');
+    var emailInput = document.getElementById('suEmail');
+    emailInput.addEventListener('input', function () {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        document.getElementById('suEmailError').hidden = true;
+      }
+    });
+    form.addEventListener('change', function (event) {
+      if (event.target.name === 'entry.1499831962') {
+        document.getElementById('suDeviceError').hidden = true;
+      }
+    });
+    form.addEventListener('submit', function (event) {
+      var email = emailInput.value.trim();
+      var device = form.querySelector('input[name="entry.1499831962"]:checked');
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       document.getElementById('suEmailError').hidden = emailOk;
       document.getElementById('suDeviceError').hidden = !!device;
-      document.getElementById('suSendError').hidden = true;
-      if (!emailOk || !device) return;
-      if (form.querySelector('.su-hp').value) { form.hidden = true; document.getElementById('suDone').hidden = false; return; }
-      var btn = document.getElementById('suSubmit');
-      btn.disabled = true; btn.textContent = '送信中…';
-      var body = new URLSearchParams();
-      body.append('entry.1832670985', email);
-      body.append('entry.1499831962', device.value);
-      fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body })
-        .then(function () {
-          form.hidden = true; document.getElementById('suDone').hidden = false;
-          if (typeof window.gtag === 'function') {
-            gtag('event', 'sign_up', { method: 'preregistration' });
-            gtag('event', 'qualify_lead', { method: 'preregistration' }); // GA4キーイベント(コンバージョン)
-          }
-        })
-        .catch(function () {
-          btn.disabled = false; btn.textContent = '先行体験登録';
-          document.getElementById('suSendError').hidden = false;
-        });
+
+      if (!emailOk || !device || form.querySelector('.su-hp').value) {
+        event.preventDefault();
+        return;
+      }
+
+      var button = document.getElementById('suSubmit');
+      button.disabled = true;
+      button.textContent = '受付画面へ移動中…';
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'signup_submit', { method: 'testflight_registration_attempt' });
+      }
     });
   })();
   </script>
