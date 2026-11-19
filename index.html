@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#164534">
-<title>18 Score｜ゴルフの記録・分析アプリ</title>
+<title>18 Score｜AI時代のスコアカウンター</title>
 <meta name="description" content="ゴルフスコア管理アプリ「18 Score」。記録はかんたん、分析はおまかせ。タップするだけのスコア・ショット記録と、記録をもとにしたラウンドの統計・分析。">
 <link rel="canonical" href="https://18score.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="18 Score">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="https://18score.app/">
-<meta property="og:title" content="18 Score｜ゴルフの記録・分析アプリ">
+<meta property="og:title" content="18 Score｜AI時代のスコアカウンター">
 <meta property="og:description" content="記録はかんたん、分析はおまかせ。タップするだけのスコア記録と、記録をもとにしたラウンドの統計・分析。">
 <meta property="og:image" content="https://18score.app/assets/og-card.jpg">
 <meta property="og:image:secure_url" content="https://18score.app/assets/og-card.jpg">
@@ -20,7 +20,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="18 Score｜記録はかんたん、分析はおまかせ">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="18 Score｜ゴルフの記録・分析アプリ">
+<meta name="twitter:title" content="18 Score｜AI時代のスコアカウンター">
 <meta name="twitter:description" content="記録はかんたん、分析はおまかせ。タップするだけのスコア記録と、記録をもとにしたラウンドの統計・分析。">
 <meta name="twitter:image" content="https://18score.app/assets/og-card.jpg">
 <meta name="twitter:image:alt" content="18 Score｜記録はかんたん、分析はおまかせ">
@@ -46,8 +46,11 @@ img{display:block;max-width:100%}
 .topnav{padding:14px 30px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .topnav .inner{display:flex;align-items:center;justify-content:space-between}
 .topnav img{height:28px;width:auto}
-.btn-cta{background:var(--btn);color:#fff;font-weight:700;font-size:13px;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(47,107,75,.28)}
-a.btn-cta:hover{color:#fff;background:var(--green)}
+.app-store-link{display:inline-block;line-height:0;padding:12px;vertical-align:middle}
+.app-store-link img{height:48px;width:auto}
+.app-store-link:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.topnav .app-store-link{padding:10px;margin:-10px}
+.topnav .app-store-link img{height:40px;width:auto}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;background:#fff}
@@ -63,8 +66,7 @@ a.btn-cta:hover{color:#fff;background:var(--green)}
 .hero-checks{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:11px}
 .hero-checks li{display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500}
 .hero-checks img{width:20px;height:20px}
-.btn-hero{background:var(--btn);color:#fff;font-weight:700;font-size:14.5px;padding:14px 26px;border-radius:8px;box-shadow:0 6px 16px rgba(47,107,75,.32);display:inline-block}
-a.btn-hero:hover{color:#fff;background:var(--green)}
+
 .hero-visual{display:flex;justify-content:center;align-items:center;position:relative;z-index:0}
 .hero-visual img{width:100%;max-width:490px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.28))}
 
@@ -243,8 +245,7 @@ a.btn-hero:hover{color:#fff;background:var(--green)}
 .cta-visual img{width:118%;max-width:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.4))}
 .cta-copy{padding:34px 34px 34px 20px}
 .cta-copy .msg{font-size:20px;font-weight:900;color:#fff;line-height:1.55;margin-bottom:20px;text-align:center}
-.btn-gold{display:block;background:var(--gold);color:#fff;font-weight:900;font-size:16px;padding:16px;border-radius:9px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
-a.btn-gold:hover{color:#fff;background:#b8873a}
+.cta-copy .app-store-link{display:table;margin:0 auto}
 .cta-note{font-size:10.5px;color:rgba(255,255,255,.7);text-align:center;margin-top:10px}
 
 /* ---------- footer ---------- */
@@ -304,7 +305,7 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
 <header class="topnav">
   <div class="inner">
     <img src="assets/lp/logo.png" alt="18 Score">
-    <a class="btn-cta" href="./signup/">先行体験登録</a>
+    <a class="app-store-link" data-location="header" href="https://apps.apple.com/jp/app/18-score/id6809644260" aria-label="18 ScoreをApp Storeからダウンロード"><img src="assets/app-store-download-ja.svg" alt="App Storeからダウンロード" width="131" height="48"></a>
   </div>
 </header>
 
@@ -317,14 +318,14 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       <div>
         <div class="hero-badge">ラウンドの記録・分析</div>
         <h1>記録は<span class="hl">かんたん</span>、<br>分析はおまかせ</h1>
-        <p class="hero-sub">ゴルフの記録・分析アプリ</p>
+        <p class="hero-sub">AI時代のスコアカウンター</p>
         <ul class="hero-checks">
           <li><img src="assets/lp/icon-check-circle.png" alt="">スコアカウンター感覚で、タップするだけ</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">GPSでショット位置と飛距離を可視化</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">スコアもショットもまとめて分析</li>
           <li><img src="assets/lp/icon-check-circle.png" alt="">次のラウンドに活きる改善提案</li>
         </ul>
-        <div><a class="btn-hero" href="./signup/">先行体験登録</a></div>
+        <div><a class="app-store-link" data-location="hero" href="https://apps.apple.com/jp/app/18-score/id6809644260" aria-label="18 ScoreをApp Storeからダウンロード"><img src="assets/app-store-download-ja.svg" alt="App Storeからダウンロード" width="131" height="48"></a></div>
       </div>
       <div class="hero-visual">
         <img src="assets/lp/hero-devices.png?v=2" alt="18 Score アプリ（iPhoneとApple Watch）">
@@ -625,8 +626,8 @@ a.btn-gold:hover{color:#fff;background:#b8873a}
       </div>
       <div class="cta-copy">
         <div class="msg">記録はかんたん、分析はおまかせ</div>
-        <a class="btn-gold" href="./signup/">先行体験登録</a>
-        <div class="cta-note">TestFlightベータ版を無料で。登録は30秒です。</div>
+        <a class="app-store-link" data-location="footer" href="https://apps.apple.com/jp/app/18-score/id6809644260" aria-label="18 ScoreをApp Storeからダウンロード"><img src="assets/app-store-download-ja.svg" alt="App Storeからダウンロード" width="131" height="48"></a>
+        <div class="cta-note">iPhone・Apple Watchでご利用いただけます。</div>
       </div>
     </div>
   </div>
